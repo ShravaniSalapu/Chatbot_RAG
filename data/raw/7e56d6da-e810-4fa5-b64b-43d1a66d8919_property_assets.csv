@@ -1,0 +1,4 @@
+Asset ID,Asset Name,Category,Quantity,Brand / Model,Purchase Date,Value,Supplier / Vendor,Invoice / Bill No,Location,Condition,Status,Responsible Person,Warranty Expiry,Physical Verification,Remarks,Image,Created
+GNWF-AST-000004,Hockey,sports,1,MRF,23/05/2026,"₹75,000",Sportteam,INV123156121,Hyderabad,Good,Damaged,System Administrator,06/06/2026,23/05/2026,good,Attached,23/05/2026
+GNWF-AST-000002,Football,sports,3,MRF,22/05/2026,"₹5,000",India,INV2026011,Room-111,Good,Disposed,System Administrator,25/05/2028,04/05/2026,old ball,Attached,22/05/2026
+GNWF-AST-000001,Cricket bat,sports,3,MRF,22/05/2026,"₹5,000",India,INV20260117,Room-1115,Good,UnderRepair,System Administrator,25/05/2028,04/05/2026,old ball,Attached,22/05/2026

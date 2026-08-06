@@ -1,0 +1,79 @@
+# FastAPI and web framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Document processing
+python-docx
+python-pptx
+PyPDF2
+pdfplumber
+pymupdf
+openpyxl
+pandas
+Pillow
+
+# OCR and document parsing
+docling
+unstructured[local-inference]
+pytesseract
+easyocr
+paddleocr
+paddlepaddle
+
+# Vector database
+qdrant-client
+
+# Embeddings
+sentence-transformers>=5.0.0
+transformers>=5.0.0
+tokenizers>=0.22.0,<=0.23.0
+torch>=2.4
+
+# LLM and API clients
+openai
+httpx
+
+# Search and retrieval
+rank-bm25
+numpy
+
+# Utilities
+python-dotenv
+pydantic
+pydantic-settings
+aiofiles
+email-validator
+
+# Database & migrations
+sqlalchemy
+psycopg2-binary
+alembic
+
+# Authentication
+python-jose[cryptography]
+bcrypt>=4.0.0
+
+# Redis
+redis
+
+# Phase 2 — async processing & object storage
+celery
+flower
+minio
+
+# Phase 4 — agentic AI (LangChain 1.x create_agent API)
+langchain>=1.0.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+
+# Phase 3 — enterprise features (requires >=8.0.1 for FastAPI 0.137+)
+prometheus-fastapi-instrumentator>=8.0.1
+prometheus-client
+
+# Logging
+loguru
+
+# Testing
+pytest
+pytest-asyncio

@@ -1,0 +1,69 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+env
+*.pem
+*.key
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+wheels/
+*.egg-info/
+.eggs/
+*.egg
+.venv/
+venv/
+ENV/
+env.bak/
+.conda/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.tox/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & runtime data
+logs/
+*.log
+data/raw/
+data/processed/
+data/chunks/
+
+# Local model caches (if downloaded into the repo)
+.cache/
+models/
+*.pt
+*.bin
+*.safetensors
+
+# Docker / local volumes (if any bind mounts create junk)
+tmp/
+temp/
+
+# Node/SDK build (if you add sdk later)
+node_modules/
+sdk/dist/
+static/sdk/*.map
+
+# Celery / Flower
+celerybeat-schedule
+celerybeat.pid
