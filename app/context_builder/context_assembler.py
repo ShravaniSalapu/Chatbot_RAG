@@ -60,7 +60,7 @@ class ContextAssembler:
     
     def assemble_context_with_citations(self, results: List[Dict[str, Any]], max_tokens: Optional[int] = None) -> Dict[str, Any]:
         """
-        Assemble context with citation information
+        Assemble context with citation information, organized by sections
         
         Args:
             results: Search results
@@ -71,39 +71,72 @@ class ContextAssembler:
         """
         logger.info(f"Assembling context with citations from {len(results)} results")
         
+        # Group results by document and section for better organization
+        grouped_results = self._group_by_section(results)
+        
         context_parts = []
         total_tokens = 0
-        
-        sorted_results = sorted(results, key=lambda x: x.get('score', 0), reverse=True)
+        citation_index = 1
 
         raw_citations = []
-        for idx, result in enumerate(sorted_results):
-            content = result.get('content', '')
-            tokens = self._estimate_tokens(content)
+        
+        # Process each section group
+        for section_key, section_results in grouped_results.items():
+            section_context = []
+            section_heading = section_key[1] if section_key[1] else "General Content"
+            document_name = section_key[0] if section_key[0] else "Unknown Document"
+            
+            # Add section header
+            section_header = f"## SECTION: {section_heading} (from {document_name})"
+            section_context.append(section_header)
+            
+            for result in section_results:
+                content = result.get('content', '')
+                tokens = self._estimate_tokens(content)
 
-            if max_tokens and total_tokens + tokens > max_tokens:
-                remaining_tokens = max_tokens - total_tokens
-                if remaining_tokens > 0:
-                    truncated = self._truncate_to_tokens(content, remaining_tokens)
-                    context_parts.append(f"[{idx+1}] {truncated}")
-                break
+                if max_tokens and total_tokens + tokens > max_tokens:
+                    remaining_tokens = max_tokens - total_tokens
+                    if remaining_tokens > 0:
+                        truncated = self._truncate_to_tokens(content, remaining_tokens)
+                        section_context.append(f"[{citation_index}] {truncated}")
+                        
+                        meta = result.get('metadata') or {}
+                        raw_citations.append({
+                            'index': citation_index,
+                            'chunk_id': result.get('chunk_id'),
+                            'document_id': result.get('document_id'),
+                            'filename': result.get('filename') or meta.get('filename') or document_name,
+                            'page_number': result.get('page_number') or meta.get('page_number'),
+                            'heading': result.get('heading') or meta.get('heading') or section_heading,
+                            'chunk_type': result.get('chunk_type') or meta.get('chunk_type'),
+                            'score': result.get('score'),
+                            'content': content,
+                            'snippet': content[:200],
+                        })
+                        citation_index += 1
+                    break
 
-            context_parts.append(f"[{idx+1}] {content}")
-            total_tokens += tokens
+                section_context.append(f"[{citation_index}] {content}")
+                total_tokens += tokens
 
-            meta = result.get('metadata') or {}
-            raw_citations.append({
-                'index': idx + 1,
-                'chunk_id': result.get('chunk_id'),
-                'document_id': result.get('document_id'),
-                'filename': result.get('filename') or meta.get('filename') or 'Unknown',
-                'page_number': result.get('page_number') or meta.get('page_number'),
-                'heading': result.get('heading') or meta.get('heading'),
-                'chunk_type': result.get('chunk_type') or meta.get('chunk_type'),
-                'score': result.get('score'),
-                'content': content,
-                'snippet': content[:200],
-            })
+                meta = result.get('metadata') or {}
+                raw_citations.append({
+                    'index': citation_index,
+                    'chunk_id': result.get('chunk_id'),
+                    'document_id': result.get('document_id'),
+                    'filename': result.get('filename') or meta.get('filename') or document_name,
+                    'page_number': result.get('page_number') or meta.get('page_number'),
+                    'heading': result.get('heading') or meta.get('heading') or section_heading,
+                    'chunk_type': result.get('chunk_type') or meta.get('chunk_type'),
+                    'score': result.get('score'),
+                    'content': content,
+                    'snippet': content[:200],
+                })
+                citation_index += 1
+            
+            # Add section to context if it has content
+            if len(section_context) > 1:  # More than just the header
+                context_parts.append("\n".join(section_context))
 
         citations = dedupe_citations(
             raw_citations,
@@ -118,6 +151,36 @@ class ContextAssembler:
             'citations': citations,
             'total_tokens': total_tokens
         }
+    
+    def _group_by_section(self, results: List[Dict[str, Any]]) -> Dict[tuple, List[Dict[str, Any]]]:
+        """
+        Group results by document and section for organized context
+        
+        Args:
+            results: Search results
+            
+        Returns:
+            Dictionary mapping (document_name, section_heading) to results
+        """
+        grouped = {}
+        
+        for result in results:
+            meta = result.get('metadata') or {}
+            document_name = result.get('filename') or meta.get('filename') or 'Unknown Document'
+            section_heading = result.get('heading') or meta.get('heading') or 'General Content'
+            
+            key = (document_name, section_heading)
+            
+            if key not in grouped:
+                grouped[key] = []
+            
+            grouped[key].append(result)
+        
+        # Sort results within each group by score
+        for key in grouped:
+            grouped[key].sort(key=lambda x: x.get('score', 0), reverse=True)
+        
+        return grouped
     
     def assemble_by_document(self, results: List[Dict[str, Any]]) -> Dict[str, str]:
         """

@@ -2,9 +2,10 @@
 Celery application for async document processing (Phase 2).
 """
 
+from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 from celery import Celery
 

@@ -3,25 +3,27 @@ Enterprise Multimodal RAG System
 Main entry point for FastAPI application
 """
 
+from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from pathlib import Path
 from app.api import upload, chat, search, health, documents, auth, tenants, api_keys, cache, usage, audit, agent
 from app.monitoring.prometheus import setup_prometheus
 from app.utils.logger import setup_logger
 from app.api import chatbot, embed
-
+from app.api.widget import router as widget_router
+from app.api import chatbot_documents
+from app.api import widget_chat
 
 logger = setup_logger(__name__)
 
 app = FastAPI(
-    title="Enterprise Multimodal RAG",
+    title="KNOWA AI",
     description="Production-ready Multimodal RAG system with multi-tenant SaaS foundation",
     version="1.4.0",
 )
@@ -51,6 +53,12 @@ app.include_router(audit.router, prefix="/api/v1", tags=["audit"])
 app.include_router(agent.router, prefix="/api/v1", tags=["agent"])
 app.include_router(chatbot.router, prefix="/api/v1")
 app.include_router(embed.router, prefix="/api/v1")
+app.include_router(
+    widget_router,
+    prefix="/api/v1",
+)
+app.include_router(chatbot_documents.router, prefix="/api/v1")
+app.include_router(widget_chat.router, prefix="/api/v1")
 
 STATIC_DIR = Path(__file__).parent / "static"
 if STATIC_DIR.exists():
@@ -63,7 +71,11 @@ async def serve_ui():
     index_path = STATIC_DIR / "index.html"
     if index_path.exists():
         return FileResponse(str(index_path))
-    return {"message": "Enterprise Multimodal RAG API", "docs": "/docs"}
+    # Try serving new_test_widget.html as fallback
+    new_test_path = Path(__file__).parent / "new_test_widget.html"
+    if new_test_path.exists():
+        return FileResponse(str(new_test_path))
+    return {"message": "KNOWA AI API", "docs": "/docs"}
 
 
 setup_prometheus(app)
@@ -78,7 +90,7 @@ async def startup_event():
     if os.getenv("EMBEDDING_DEVICE", "cpu") == "cpu":
         torch.set_num_threads(int(os.getenv("TORCH_NUM_THREADS", os.cpu_count() or 4)))
 
-    logger.info("Starting Enterprise Multimodal RAG System")
+    logger.info("Starting KNOWA AI System")
 
     from app.db.database import init_db
     init_db()
@@ -119,7 +131,7 @@ async def startup_event():
 @app.on_event("shutdown")
 async def shutdown_event():
     """Cleanup on shutdown."""
-    logger.info("Shutting down Enterprise Multimodal RAG System")
+    logger.info("Shutting down KNOWA AI System")
 
 
 if __name__ == "__main__":

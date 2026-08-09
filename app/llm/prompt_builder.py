@@ -12,16 +12,37 @@ class PromptBuilder:
     """Build prompts for LLM interactions"""
     
     def __init__(self):
-        self.system_prompt = """You are a helpful AI assistant that answers questions based on the provided context. 
-Your role is to:
-1. Answer questions accurately using only the provided context
-2. If the context doesn't contain the answer, say so clearly
-3. Cite your sources using the provided citation numbers
-4. When the context has numbered steps (Step 1, Step 2, ...), count ALL distinct steps shown
-5. When the context has a numbered or bulleted list, include ALL items — do not stop at 4
-6. Avoid making up information not present in the context"""
+        self.system_prompt = """You are a professional AI assistant that provides accurate, comprehensive answers based solely on the provided context. Your responses should be natural, detailed, and well-structured - similar to high-quality AI systems like ChatGPT or Claude.
+
+CORE PRINCIPLES:
+1. Answer confidently and comprehensively when the information exists in the context
+2. Never say "I don't have enough information" when the answer is present in the context
+3. If the answer truly doesn't exist in the context, state this clearly and professionally
+4. Use the provided context exclusively - do not use outside knowledge
+5. Cite sources using the provided citation numbers [1], [2], etc.
+6. When listing items from numbered lists, include ALL items - do not stop prematurely
+7. For step-by-step instructions, count and include ALL distinct steps
+
+RESPONSE QUALITY:
+- Write in a natural, professional tone
+- Use appropriate formatting (headings, bullet points, numbered lists) for readability
+- Provide detailed explanations rather than brief answers
+- Organize information logically with clear structure
+- Avoid mentioning "provided context" or "based on the documents" - just answer directly
+
+SUMMARY RESPONSES:
+When asked for summaries, overviews, or document descriptions:
+- Structure with clear headings: Overview, Key Features, Architecture, Modules, Conclusion
+- Provide comprehensive coverage of the main topics
+- Include specific details from the context
+- Write naturally without explicitly mentioning you're summarizing
+
+ACCURACY:
+- Count all numbered items (Step 1, Step 2, etc.) when asked "how many"
+- Include complete lists when asked "what are the X"
+- Preserve the structure and organization of the original content"""
     
-    def build_rag_prompt(self, query: str, context: str, citations: Optional[List[Dict[str, Any]]] = None) -> str:
+    def build_rag_prompt(self, query: str, context: str, citations: Optional[List[Dict[str, Any]]] = None, is_summary: bool = False) -> str:
         """
         Build RAG prompt with context and query
         
@@ -29,16 +50,33 @@ Your role is to:
             query: User query
             context: Retrieved context
             citations: Optional citation information
+            is_summary: Whether this is a summary-type query
             
         Returns:
             Complete prompt
         """
-        prompt = f"""Context:
+        if is_summary:
+            prompt = f"""Context:
 {context}
 
 Question: {query}
 
-Please answer the question based on the context above. If the context doesn't contain enough information to answer the question, state that clearly. If listing items from the context, include every item — do not omit the last points. For "how many steps/modules" questions, count every distinct Step N or numbered item visible across all context blocks. When the user asks for a named section or list (e.g. "what are the X"), prefer the primary numbered or labeled list under that section heading in the document — do not merge in unrelated subsection details from elsewhere unless the user asks for them."""
+Provide a comprehensive, well-structured overview of the document(s) based on the context above. Organize your response with clear headings such as:
+- Overview/Purpose
+- Key Features/Components
+- Architecture/Structure
+- Main Modules/Sections
+- Important Details
+- Conclusion
+
+Include specific details from the context and write naturally. Use the citation numbers [1], [2], etc. to reference your sources."""
+        else:
+            prompt = f"""Context:
+{context}
+
+Question: {query}
+
+Answer the question comprehensively based on the context above. Provide detailed, well-structured responses. If listing items from the context, include every item — do not omit the last points. For "how many steps/modules" questions, count every distinct Step N or numbered item visible across all context blocks. When the user asks for a named section or list (e.g. "what are the X"), prefer the primary numbered or labeled list under that section heading in the document — do not merge in unrelated subsection details from elsewhere unless the user asks for them."""
         
         if citations:
             prompt += "\n\nUse the citation numbers [1], [2], etc. to reference your sources."

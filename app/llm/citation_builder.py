@@ -101,7 +101,7 @@ class CitationBuilder:
     
     def build_citation_objects(self, citations: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
-        Build standardized citation objects
+        Build standardized citation objects with enhanced metadata
         
         Args:
             citations: Raw citation data
@@ -112,22 +112,62 @@ class CitationBuilder:
         standardized = []
         
         for i, cit in enumerate(citations):
-            standardized.append({
+            meta = cit.get('metadata') or {}
+            
+            # Extract comprehensive citation information
+            citation_obj = {
                 'index': i + 1,
                 'chunk_id': cit.get('chunk_id') or '',
                 'document_id': cit.get('document_id') or '',
                 'filename': (
                     cit.get('filename')
-                    or (cit.get('metadata') or {}).get('filename')
+                    or meta.get('filename')
                     or 'Unknown'
                 ),
-                'page_number': cit.get('page_number') or (cit.get('metadata') or {}).get('page_number'),
-                'heading': cit.get('heading') or (cit.get('metadata') or {}).get('heading'),
+                'page_number': cit.get('page_number') or meta.get('page_number'),
+                'heading': cit.get('heading') or meta.get('heading') or '',
+                'chunk_type': cit.get('chunk_type') or meta.get('chunk_type') or '',
                 'score': cit.get('score'),
-                'snippet': (cit.get('snippet') or cit.get('content') or '')[:200]
-            })
+                'snippet': (cit.get('snippet') or cit.get('content') or '')[:200],
+                'content': cit.get('content') or '',
+                # Additional metadata for enhanced citations
+                'section': cit.get('heading') or meta.get('heading') or '',
+                'document_name': cit.get('filename') or meta.get('filename') or 'Unknown',
+                'location': self._build_location_string(cit, meta)
+            }
+            
+            standardized.append(citation_obj)
         
         return standardized
+    
+    def _build_location_string(self, citation: Dict[str, Any], meta: Dict[str, Any]) -> str:
+        """Build a comprehensive location string for the citation"""
+        parts = []
+        
+        filename = citation.get('filename') or meta.get('filename') or 'Unknown'
+        page = citation.get('page_number') or meta.get('page_number')
+        heading = citation.get('heading') or meta.get('heading')
+        chunk_type = citation.get('chunk_type') or meta.get('chunk_type')
+        
+        parts.append(filename)
+        
+        if page:
+            parts.append(f"Page {page}")
+        
+        if heading and heading != "Section" and heading != "General Content":
+            parts.append(f"Section: {heading}")
+        
+        if chunk_type:
+            type_labels = {
+                "table": "Table",
+                "image": "Figure",
+                "multimodal": "Figure & Text",
+                "text": "Text"
+            }
+            if chunk_type in type_labels:
+                parts.append(type_labels[chunk_type])
+        
+        return " — ".join(parts)
     
     def format_citations_for_display(self, citations: List[Dict[str, Any]]) -> str:
         """

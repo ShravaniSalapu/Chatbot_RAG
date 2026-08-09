@@ -25,31 +25,42 @@ def format_source_label(citation: Dict[str, Any]) -> str:
     )
     page = citation.get("page_number") or meta.get("page_number")
     chunk_type = citation.get("chunk_type") or meta.get("chunk_type") or ""
+    heading = citation.get("heading") or meta.get("heading") or ""
     content = (citation.get("content") or citation.get("snippet") or "").strip()
 
+    # Check for figure/table captions in content
     for line in content.splitlines():
         line = line.strip()
         if re.match(r"^(figure|fig\.?|table|chart)\s", line, re.IGNORECASE):
-            return f"{filename} — {line[:100]}"
+            caption = line[:100]
+            if page:
+                return f"{filename} (Page {page}) — {caption}"
+            return f"{filename} — {caption}"
 
+    # Build comprehensive citation with document, page, and section
+    parts = [filename]
+    
     if page:
-        if chunk_type == "table":
-            return f"{filename} — Page {page}, Table"
-        if chunk_type == "image":
-            return f"{filename} — Page {page}, Figure"
-        return f"{filename} — Page {page}"
-
-    if chunk_type == "table":
-        return f"{filename} — Table data"
-    if chunk_type == "image":
-        return f"{filename} — Figure/Image"
-    if chunk_type == "multimodal":
-        return f"{filename} — Figure & text"
-
-    heading = citation.get("heading") or meta.get("heading")
-    if heading and heading != "Section":
-        return f"{filename} — {heading}"
-
+        parts.append(f"Page {page}")
+    
+    if heading and heading != "Section" and heading != "General Content":
+        parts.append(f"Section: {heading}")
+    
+    if chunk_type:
+        type_labels = {
+            "table": "Table",
+            "image": "Figure/Image", 
+            "multimodal": "Figure & Text",
+            "text": "Text"
+        }
+        if chunk_type in type_labels:
+            parts.append(type_labels[chunk_type])
+    
+    # If we have meaningful parts, join them
+    if len(parts) > 1:
+        return " — ".join(parts)
+    
+    # Fallback to content preview
     preview = re.sub(r"\s+", " ", content)[:80]
     if preview:
         return f"{filename} — {preview}"

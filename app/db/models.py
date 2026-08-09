@@ -95,6 +95,11 @@ class Document(Base):
 
     tenant: Mapped["Tenant"] = relationship(back_populates="documents")
     uploaded_by_user: Mapped["User | None"] = relationship(back_populates="documents")
+    chatbot_documents: Mapped[list["ChatbotDocument"]] = relationship(
+        "ChatbotDocument",
+        back_populates="document",
+        cascade="all, delete-orphan",
+    )
 
 
 class ApiKey(Base):
@@ -230,5 +235,12 @@ class Chatbot(Base):
         uselist=False,
         cascade="all, delete-orphan",
     )
+    chatbot_documents: Mapped[list["ChatbotDocument"]] = relationship(
+    "ChatbotDocument",
+    back_populates="chatbot",
+    cascade="all, delete-orphan",
+)
+
+from app.db.chatbot_document import ChatbotDocument
 
 

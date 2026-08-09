@@ -53,6 +53,210 @@ class ParentRetriever:
         
         return results_with_parent
     
+    def retrieve_with_siblings(
+        self, 
+        chunk_id: str, 
+        document_id: str,
+        include_previous: int = 1,
+        include_next: int = 1,
+        tenant_id: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Retrieve a chunk with its previous and next sibling chunks
+        
+        Args:
+            chunk_id: The target chunk ID
+            document_id: Document identifier
+            include_previous: Number of previous chunks to include
+            include_next: Number of next chunks to include
+            tenant_id: Optional tenant filter
+            
+        Returns:
+            Dictionary with main chunk and sibling context
+        """
+        logger.info(f"Retrieving siblings for chunk: {chunk_id}")
+        
+        try:
+            from qdrant_client.models import Filter, FieldCondition, MatchValue
+            
+            # Get the main chunk with its position info
+            collection_name = self.collection_manager.get_text_collection()
+            
+            # Search for the chunk to get its metadata
+            filter = Filter(
+                must=[
+                    FieldCondition(key="chunk_id", match=MatchValue(value=chunk_id)),
+                    FieldCondition(key="document_id", match=MatchValue(value=document_id))
+                ]
+            )
+            
+            if tenant_id:
+                filter.must.append(
+                    FieldCondition(key="tenant_id", match=MatchValue(value=tenant_id))
+                )
+            
+            results = self.qdrant.search(
+                collection_name=collection_name,
+                query_vector=[0.0] * 1024,  # Dummy vector
+                limit=1,
+                filter=filter
+            )
+            
+            if not results:
+                return {'main_chunk': None, 'previous_chunks': [], 'next_chunks': []}
+            
+            main_payload = results[0]['payload']
+            main_metadata = self.payload_builder.extract_search_metadata(main_payload)
+            
+            # Get chunk index/position if available
+            chunk_index = main_payload.get('chunk_index')
+            
+            previous_chunks = []
+            next_chunks = []
+            
+            if chunk_index is not None:
+                # Retrieve previous chunks
+                if include_previous > 0:
+                    prev_filter = Filter(
+                        must=[
+                            FieldCondition(key="document_id", match=MatchValue(value=document_id)),
+                            FieldCondition(key="chunk_index", range={"lt": chunk_index})
+                        ]
+                    )
+                    if tenant_id:
+                        prev_filter.must.append(
+                            FieldCondition(key="tenant_id", match=MatchValue(value=tenant_id))
+                        )
+                    
+                    prev_results = self.qdrant.search(
+                        collection_name=collection_name,
+                        query_vector=[0.0] * 1024,
+                        limit=include_previous,
+                        filter=prev_filter,
+                        with_payload=True
+                    )
+                    
+                    # Sort by index descending to get closest previous chunks
+                    prev_results.sort(key=lambda x: x.payload.get('chunk_index', 0), reverse=True)
+                    
+                    for result in prev_results:
+                        metadata = self.payload_builder.extract_search_metadata(result['payload'])
+                        previous_chunks.append({
+                            'chunk_id': metadata['chunk_id'],
+                            'document_id': metadata['document_id'],
+                            'content': metadata['content'],
+                            'metadata': metadata
+                        })
+                
+                # Retrieve next chunks
+                if include_next > 0:
+                    next_filter = Filter(
+                        must=[
+                            FieldCondition(key="document_id", match=MatchValue(value=document_id)),
+                            FieldCondition(key="chunk_index", range={"gt": chunk_index})
+                        ]
+                    )
+                    if tenant_id:
+                        next_filter.must.append(
+                            FieldCondition(key="tenant_id", match=MatchValue(value=tenant_id))
+                        )
+                    
+                    next_results = self.qdrant.search(
+                        collection_name=collection_name,
+                        query_vector=[0.0] * 1024,
+                        limit=include_next,
+                        filter=next_filter,
+                        with_payload=True
+                    )
+                    
+                    # Sort by index ascending to get closest next chunks
+                    next_results.sort(key=lambda x: x.payload.get('chunk_index', float('inf')))
+                    
+                    for result in next_results:
+                        metadata = self.payload_builder.extract_search_metadata(result['payload'])
+                        next_chunks.append({
+                            'chunk_id': metadata['chunk_id'],
+                            'document_id': metadata['document_id'],
+                            'content': metadata['content'],
+                            'metadata': metadata
+                        })
+            
+            return {
+                'main_chunk': {
+                    'chunk_id': main_metadata['chunk_id'],
+                    'document_id': main_metadata['document_id'],
+                    'content': main_metadata['content'],
+                    'metadata': main_metadata
+                },
+                'previous_chunks': previous_chunks,
+                'next_chunks': next_chunks
+            }
+            
+        except Exception as e:
+            logger.error(f"Error retrieving siblings: {str(e)}")
+            return {'main_chunk': None, 'previous_chunks': [], 'next_chunks': []}
+    
+    def enhance_results_with_siblings(
+        self,
+        results: List[Dict[str, Any]],
+        include_previous: int = 1,
+        include_next: int = 1,
+        tenant_id: Optional[str] = None
+    ) -> List[Dict[str, Any]]:
+        """
+        Enhance retrieval results with sibling chunks for better context
+        
+        Args:
+            results: Original retrieval results
+            include_previous: Number of previous chunks to include
+            include_next: Number of next chunks to include
+            tenant_id: Optional tenant filter
+            
+        Returns:
+            Enhanced results with sibling context
+        """
+        logger.info(f"Enhancing {len(results)} results with sibling context")
+        
+        enhanced_results = []
+        for result in results:
+            chunk_id = result.get('chunk_id')
+            document_id = result.get('document_id')
+            
+            if not chunk_id or not document_id:
+                enhanced_results.append(result)
+                continue
+            
+            sibling_data = self.retrieve_with_siblings(
+                chunk_id=chunk_id,
+                document_id=document_id,
+                include_previous=include_previous,
+                include_next=include_next,
+                tenant_id=tenant_id
+            )
+            
+            # Combine content with siblings
+            combined_content_parts = []
+            
+            # Add previous chunks
+            for prev_chunk in sibling_data['previous_chunks']:
+                combined_content_parts.append(prev_chunk['content'])
+            
+            # Add main chunk
+            combined_content_parts.append(result.get('content', ''))
+            
+            # Add next chunks
+            for next_chunk in sibling_data['next_chunks']:
+                combined_content_parts.append(next_chunk['content'])
+            
+            enhanced_result = result.copy()
+            enhanced_result['content'] = '\n\n'.join(combined_content_parts)
+            enhanced_result['has_sibling_context'] = True
+            enhanced_result['sibling_count'] = len(sibling_data['previous_chunks']) + len(sibling_data['next_chunks'])
+            
+            enhanced_results.append(enhanced_result)
+        
+        return enhanced_results
+    
     def _get_parent_chunk(self, child_chunk_id: str) -> Optional[Dict[str, Any]]:
         """Get parent chunk for a child chunk"""
         try:

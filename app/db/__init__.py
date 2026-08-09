@@ -1,5 +1,16 @@
 """Database package."""
 
-from app.db.database import Base, get_db, init_db, SessionLocal
+from app.db.database import Base, SessionLocal, get_db, init_db
 
-__all__ = ["Base", "get_db", "init_db", "SessionLocal"]
+# Import all models so SQLAlchemy registers them
+from app.db import models
+from app.db.chatbot_document import ChatbotDocument
+
+__all__ = [
+    "Base",
+    "SessionLocal",
+    "get_db",
+    "init_db",
+    "models",
+    "ChatbotDocument",
+]

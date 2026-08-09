@@ -14,14 +14,19 @@ class LLMClient:
     """Client for LLM API calls using OpenRouter"""
     
     def __init__(self, api_key: Optional[str] = None, base_url: Optional[str] = None, model: Optional[str] = None):
-        self.api_key = api_key or os.getenv("OPENROUTER_API_KEY")
+        self._api_key = api_key
         self.base_url = base_url or os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
         self.model = model or os.getenv("LLM_MODEL", "anthropic/claude-3-haiku:beta")
         self.temperature = float(os.getenv("LLM_TEMPERATURE", "0.7"))
         self.max_tokens = int(os.getenv("LLM_MAX_TOKENS", "2000"))
-        
+
         if not self.api_key:
             logger.warning("OPENROUTER_API_KEY not set. LLM calls will fail.")
+
+    @property
+    def api_key(self) -> Optional[str]:
+        """Resolve API key at call time so .env loads before first LLM request."""
+        return self._api_key or os.getenv("OPENROUTER_API_KEY")
     
     async def generate_response_async(
         self,

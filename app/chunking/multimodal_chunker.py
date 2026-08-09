@@ -13,8 +13,9 @@ logger = setup_logger(__name__)
 class MultimodalChunker:
     """Implement multimodal chunking preserving table-image relationships"""
     
-    def __init__(self, chunk_size: int = 512):
+    def __init__(self, chunk_size: int = 900, chunk_overlap: int = 180):
         self.chunk_size = chunk_size
+        self.chunk_overlap = chunk_overlap
     
     def chunk(self, document: Dict[str, Any], document_id: str) -> List[Dict[str, Any]]:
         """
@@ -30,58 +31,84 @@ class MultimodalChunker:
         logger.info(f"Creating multimodal chunks for document: {document_id}")
         
         chunks = []
+        chunk_index = 0
         
         # Process text chunks
         text_chunks = self._chunk_text(document.get('raw_text', ''), document_id)
+        for chunk in text_chunks:
+            chunk['chunk_index'] = chunk_index
+            chunk_index += 1
         chunks.extend(text_chunks)
         
         # Process table chunks
-        table_chunks = self._chunk_tables(document.get('tables', []), document_id)
+        table_chunks = self._chunk_tables(document.get('tables', []), document_id, chunk_index)
+        chunk_index += len(table_chunks)
         chunks.extend(table_chunks)
         
         # Process image chunks
-        image_chunks = self._chunk_images(document.get('images', []), document_id)
+        image_chunks = self._chunk_images(document.get('images', []), document_id, chunk_index)
+        chunk_index += len(image_chunks)
         chunks.extend(image_chunks)
         
         # Create combined multimodal chunks
-        multimodal_chunks = self._create_multimodal_chunks(document, document_id)
+        multimodal_chunks = self._create_multimodal_chunks(document, document_id, chunk_index)
         chunks.extend(multimodal_chunks)
         
         logger.info(f"Created {len(chunks)} multimodal chunks")
         return chunks
     
     def _chunk_text(self, text: str, document_id: str) -> List[Dict[str, Any]]:
-        """Chunk text content"""
+        """Chunk text content with overlap and heading preservation"""
         chunks = []
-        words = text.split()
         
-        current_chunk = []
+        # Split by paragraphs first to preserve structure
+        paragraphs = text.split('\n\n')
+        
+        current_chunk = ""
         current_length = 0
+        chunk_index = 0
         
-        for word in words:
-            word_length = len(word)
+        for paragraph in paragraphs:
+            paragraph = paragraph.strip()
+            if not paragraph:
+                continue
             
-            if current_length + word_length + 1 > self.chunk_size and current_chunk:
-                chunk_text = ' '.join(current_chunk)
-                chunk_obj = {
-                    'chunk_id': str(uuid.uuid4()),
-                    'document_id': document_id,
-                    'chunk_type': 'text',
-                    'content': chunk_text,
-                    'token_count': self._estimate_tokens(chunk_text),
-                    'character_count': len(chunk_text),
-                    'parent_chunk_id': None,
-                    'child_chunk_ids': []
-                }
-                chunks.append(chunk_obj)
-                current_chunk = [word]
-                current_length = word_length
+            # Check if this is a heading (all caps, or starts with #, etc.)
+            is_heading = self._is_heading(paragraph)
+            
+            # If adding this paragraph would exceed chunk size and it's not a heading
+            if current_length + len(paragraph) + 2 > self.chunk_size and current_chunk and not is_heading:
+                # Save current chunk
+                chunk_text = current_chunk.strip()
+                if chunk_text:
+                    chunk_obj = {
+                        'chunk_id': str(uuid.uuid4()),
+                        'document_id': document_id,
+                        'chunk_type': 'text',
+                        'content': chunk_text,
+                        'token_count': self._estimate_tokens(chunk_text),
+                        'character_count': len(chunk_text),
+                        'parent_chunk_id': None,
+                        'child_chunk_ids': [],
+                        'chunk_index': chunk_index
+                    }
+                    chunks.append(chunk_obj)
+                    chunk_index += 1
+                
+                # Start new chunk with overlap
+                current_chunk = self._create_overlap_chunk(current_chunk)
+                current_length = len(current_chunk)
+            
+            # Add paragraph to current chunk
+            if current_chunk:
+                current_chunk += "\n\n" + paragraph
             else:
-                current_chunk.append(word)
-                current_length += word_length + 1
+                current_chunk = paragraph
+            current_length += len(paragraph) + 2
         
-        if current_chunk:
-            chunk_text = ' '.join(current_chunk)
+        # Add final chunk
+        if current_chunk.strip():
+            chunk_text = current_chunk.strip()
             chunk_obj = {
                 'chunk_id': str(uuid.uuid4()),
                 'document_id': document_id,
@@ -90,15 +117,48 @@ class MultimodalChunker:
                 'token_count': self._estimate_tokens(chunk_text),
                 'character_count': len(chunk_text),
                 'parent_chunk_id': None,
-                'child_chunk_ids': []
+                'child_chunk_ids': [],
+                'chunk_index': chunk_index
             }
             chunks.append(chunk_obj)
         
         return chunks
     
-    def _chunk_tables(self, tables: List[Dict[str, Any]], document_id: str) -> List[Dict[str, Any]]:
+    def _is_heading(self, text: str) -> bool:
+        """Check if text appears to be a heading"""
+        text = text.strip()
+        
+        # Check for markdown headings
+        if text.startswith('#'):
+            return True
+        
+        # Check for all caps (common in documents)
+        if text.isupper() and len(text) < 100:
+            return True
+        
+        # Check for common heading patterns
+        if any(pattern in text.lower() for pattern in ['chapter', 'section', 'part', 'introduction', 'conclusion']):
+            return True
+        
+        return False
+    
+    def _create_overlap_chunk(self, previous_chunk: str) -> str:
+        """Create overlap content from previous chunk"""
+        if not previous_chunk:
+            return ""
+        
+        # Get last portion of previous chunk for overlap
+        words = previous_chunk.split()
+        overlap_words = max(10, int(self.chunk_overlap / 5))  # Approximate words for overlap
+        
+        if len(words) > overlap_words:
+            return ' '.join(words[-overlap_words:])
+        return previous_chunk
+    
+    def _chunk_tables(self, tables: List[Dict[str, Any]], document_id: str, start_chunk_index: int = 0) -> List[Dict[str, Any]]:
         """Chunk table content — one full-table chunk plus one chunk per row for retrieval."""
         chunks = []
+        chunk_index = start_chunk_index
 
         for table in tables:
             table_id = table.get('table_id', str(uuid.uuid4()))
@@ -124,7 +184,9 @@ class MultimodalChunker:
                 'child_chunk_ids': [],
                 'page_number': table.get('page_number'),
                 'slide_number': table.get('slide_number'),
+                'chunk_index': chunk_index
             })
+            chunk_index += 1
 
             for row_idx, row in enumerate(rows):
                 if not row or not any(str(cell or "").strip() for cell in row):
@@ -159,13 +221,16 @@ class MultimodalChunker:
                     'child_chunk_ids': [],
                     'page_number': table.get('page_number'),
                     'slide_number': table.get('slide_number'),
+                    'chunk_index': chunk_index
                 })
+                chunk_index += 1
 
         return chunks
     
-    def _chunk_images(self, images: List[Dict[str, Any]], document_id: str) -> List[Dict[str, Any]]:
+    def _chunk_images(self, images: List[Dict[str, Any]], document_id: str, start_chunk_index: int = 0) -> List[Dict[str, Any]]:
         """Chunk image content"""
         chunks = []
+        chunk_index = start_chunk_index
         
         for image in images:
             image_id = image.get('image_id', str(uuid.uuid4()))
@@ -201,12 +266,14 @@ class MultimodalChunker:
                 'page_number': image.get('page_number'),
                 'slide_number': image.get('slide_number'),
                 'is_chart': image.get('is_chart', False),
+                'chunk_index': chunk_index
             }
             chunks.append(chunk_obj)
+            chunk_index += 1
         
         return chunks
     
-    def _create_multimodal_chunks(self, document: Dict[str, Any], document_id: str) -> List[Dict[str, Any]]:
+    def _create_multimodal_chunks(self, document: Dict[str, Any], document_id: str, start_chunk_index: int = 0) -> List[Dict[str, Any]]:
         """Create chunks that combine text with nearby tables/images"""
         chunks = []
         

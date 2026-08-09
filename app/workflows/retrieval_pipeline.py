@@ -28,6 +28,7 @@ from app.retrieval.query_boost import (
     is_superlative_query,
     normalize_query,
 )
+from app.retrieval.query_analyzer import QueryAnalyzer
 from app.vectorstore.collections import CollectionManager
 from app.utils.logger import setup_logger
 
@@ -46,6 +47,7 @@ class RetrievalPipeline:
         self.rerank_pipeline = RerankPipeline()
         self.context_assembler = ContextAssembler()
         self.token_optimizer = TokenOptimizer()
+        self.query_analyzer = QueryAnalyzer()
 
         self.top_k = int(os.getenv("TOP_K", "8"))
         self.rerank_top_k = int(os.getenv("RERANK_TOP_K", "5"))
@@ -65,9 +67,21 @@ class RetrievalPipeline:
         """Retrieve relevant chunks for a query."""
         query = normalize_query(query)
         method = os.getenv("RETRIEVAL_METHOD", retrieval_method or "hybrid")
-        logger.info(f"Retrieval pipeline for query: {query}, method: {method}")
+        
+        # Analyze query to determine optimal retrieval parameters
+        query_analysis = self.query_analyzer.analyze_query(query)
+        retrieval_config = query_analysis['retrieval_config']
+        
+        logger.info(f"=== RETRIEVAL PIPELINE START ===")
+        logger.info(f"Query: {query}")
+        logger.info(f"Method: {method}")
+        logger.info(f"Query type: {query_analysis['query_type']}")
+        logger.info(f"Document ID: {document_id}")
+        logger.info(f"Tenant ID: {tenant_id}")
+        logger.info(f"Allowed document IDs: {allowed_document_ids}")
 
         if allowed_document_ids is not None and not document_id and not allowed_document_ids:
+            logger.warning("No allowed document IDs and no specific document - returning empty")
             return {
                 "query": query,
                 "results": [],
@@ -77,7 +91,13 @@ class RetrievalPipeline:
                 "retrieval_method": method,
             }
 
-        limit = top_k or self.top_k
+        # Use adaptive retrieval parameters based on query analysis
+        candidate_count = retrieval_config['candidate_count']
+        final_count = top_k or retrieval_config['final_count']
+        use_parent_context = use_parent_context or retrieval_config['use_parent_context']
+        
+        limit = candidate_count  # Retrieve more candidates initially
+        logger.info(f"Retrieval config: candidate_count={candidate_count}, final_count={final_count}, use_parent_context={use_parent_context}")
         allow_images = is_visual_query(query)
         counting_q = is_counting_query(query)
         superlative_q = is_superlative_query(query)
@@ -202,8 +222,12 @@ class RetrievalPipeline:
 
         # Reranking often drops split numbered-item / multi-section list chunks.
         skip_rerank = counting_q or list_q
-        result_limit = self.rerank_top_k
-        if counting_q:
+        
+        # For summary queries, rerank all candidates, then keep top final_count
+        # For other queries, use adaptive limits
+        if query_analysis['is_summary']:
+            result_limit = candidate_count  # Rerank all candidates
+        elif counting_q:
             result_limit = max(self.rerank_top_k + 5, limit + 5)
         elif list_q:
             result_limit = max(self.rerank_top_k + 6, limit + 4)
@@ -211,12 +235,16 @@ class RetrievalPipeline:
                 result_limit = min(result_limit, len(priority_hits) + 1)
         elif superlative_q:
             result_limit = max(self.rerank_top_k + 2, limit)
+        else:
+            result_limit = candidate_count  # Rerank all candidates for better quality
 
         if use_reranking and not skip_rerank:
             results = self.rerank_pipeline.rerank_results(query, results, top_k=result_limit)
             results = boost_results_by_query(query, results)
+            # After reranking, keep only the final_count best results
+            results = results[:final_count]
         else:
-            results = results[:result_limit]
+            results = results[:final_count]
 
         if priority_hits:
             results = self._pin_priority_results(results, priority_hits, result_limit)
@@ -229,8 +257,12 @@ class RetrievalPipeline:
         )
 
         if use_parent_context:
-            results = self.parent_retriever.retrieve_with_parent(
-                query, top_k=len(results), tenant_id=tenant_id
+            # Use sibling context enhancement for better continuity
+            results = self.parent_retriever.enhance_results_with_siblings(
+                results,
+                include_previous=1,
+                include_next=1,
+                tenant_id=tenant_id
             )
             results = self._apply_document_scope(results, allowed_document_ids)
 

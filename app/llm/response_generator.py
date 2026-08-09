@@ -7,6 +7,7 @@ from app.llm.llm_client import LLMClient
 from app.llm.prompt_builder import PromptBuilder
 from app.utils.logger import setup_logger
 import time
+import re
 
 logger = setup_logger(__name__)
 
@@ -23,7 +24,8 @@ class ResponseGenerator:
         query: str,
         context: str,
         citations: Optional[List[Dict[str, Any]]] = None,
-        temperature: Optional[float] = None
+        temperature: Optional[float] = None,
+        is_summary: bool = False
     ) -> Dict[str, Any]:
         """
         Generate RAG response
@@ -33,16 +35,17 @@ class ResponseGenerator:
             context: Retrieved context
             citations: Optional citation information
             temperature: Sampling temperature
+            is_summary: Whether this is a summary-type query
             
         Returns:
             Response dictionary with answer and metadata
         """
-        logger.info(f"Generating RAG response for query: {query}")
+        logger.info(f"Generating RAG response for query: {query}, is_summary: {is_summary}")
         
         start_time = time.time()
         
         # Build prompt
-        prompt = self.prompt_builder.build_rag_prompt(query, context, citations)
+        prompt = self.prompt_builder.build_rag_prompt(query, context, citations, is_summary)
         
         try:
             # Generate response
@@ -226,3 +229,100 @@ class ResponseGenerator:
         except Exception as e:
             logger.error(f"Error generating summary: {str(e)}")
             return text[:max_length]
+    
+    def format_answer_structure(self, answer: str, is_summary: bool = False) -> str:
+        """
+        Improve answer structure and formatting
+        
+        Args:
+            answer: Raw answer from LLM
+            is_summary: Whether this is a summary-type answer
+            
+        Returns:
+            Formatted answer with better structure
+        """
+        if not answer:
+            return answer
+        
+        # For summary answers, ensure proper structure
+        if is_summary:
+            return self._format_summary_structure(answer)
+        
+        # For general answers, improve readability
+        return self._improve_readability(answer)
+    
+    def _format_summary_structure(self, answer: str) -> str:
+        """Format summary with proper headings and structure"""
+        lines = answer.split('\n')
+        formatted_lines = []
+        
+        # Ensure key sections exist for summaries
+        has_overview = any('overview' in line.lower() for line in lines)
+        has_features = any('feature' in line.lower() or 'component' in line.lower() for line in lines)
+        has_architecture = any('architecture' in line.lower() or 'structure' in line.lower() for line in lines)
+        has_conclusion = any('conclusion' in line.lower() for line in lines)
+        
+        # Add missing section headers if content suggests they should exist
+        if not has_overview and len(lines) > 3:
+            formatted_lines.append("## Overview")
+            formatted_lines.append("")
+        
+        current_section = "Overview"
+        for line in lines:
+            line = line.strip()
+            if not line:
+                formatted_lines.append("")
+                continue
+            
+            # Detect potential section headers
+            if any(keyword in line.lower() for keyword in ['overview', 'purpose', 'introduction']):
+                if not line.startswith('#'):
+                    line = f"## {line}"
+                current_section = "Overview"
+            elif any(keyword in line.lower() for keyword in ['feature', 'component', 'module', 'key aspect']):
+                if not line.startswith('#') and has_features:
+                    line = f"### {line}"
+                current_section = "Features"
+            elif any(keyword in line.lower() for keyword in ['architecture', 'structure', 'design']):
+                if not line.startswith('#'):
+                    line = f"## {line}"
+                current_section = "Architecture"
+            elif any(keyword in line.lower() for keyword in ['conclusion', 'summary', 'final']):
+                if not line.startswith('#'):
+                    line = f"## {line}"
+                current_section = "Conclusion"
+            
+            formatted_lines.append(line)
+        
+        # Add conclusion if missing and answer is substantial
+        if not has_conclusion and len(formatted_lines) > 10:
+            formatted_lines.append("")
+            formatted_lines.append("## Conclusion")
+        
+        return '\n'.join(formatted_lines)
+    
+    def _improve_readability(self, answer: str) -> str:
+        """Improve general answer readability"""
+        lines = answer.split('\n')
+        formatted_lines = []
+        
+        for line in lines:
+            line = line.strip()
+            if not line:
+                formatted_lines.append("")
+                continue
+            
+            # Convert numbered lists to proper format
+            if re.match(r'^\d+\.', line) and not line.startswith('  '):
+                # Ensure numbered lists are properly formatted
+                formatted_lines.append(line)
+            # Convert bullet points
+            elif line.startswith('-') or line.startswith('*'):
+                formatted_lines.append(line)
+            # Detect potential headings (short, capitalized lines)
+            elif len(line) < 100 and line.isupper() and not line.startswith('#'):
+                formatted_lines.append(f"### {line}")
+            else:
+                formatted_lines.append(line)
+        
+        return '\n'.join(formatted_lines)

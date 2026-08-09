@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KNOWA AI - Widget Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <img src="http://localhost:8000/static/knowa-logo.jpg" alt="KNOWA AI" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 15px;" />
+        <h1>KNOWA AI - Widget Test</h1>
+    </div>
+    
+    <div class="info">
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>This page uses the correct embed token: <code>d07a770f31f54d8194ee8925e5542ecb</code></li>
+            <li>Click the KNOWA AI chat button in the bottom-right corner</li>
+            <li>Ask: "What is this document about?"</li>
+            <li>You should get a proper response about the document</li>
+            <li>Confirm the widget shows the S logo + KNOWA AI branding</li>
+        </ul>
+    </div>
+
+    <p>The KNOWA AI chatbot widget should appear in the bottom-right corner of this page.</p>
+
+    <!-- Widget Script with Correct Embed Token -->
+    <script src="http://localhost:8000/api/v1/widget/d07a770f31f54d8194ee8925e5542ecb.js"></script>
+
+</body>
+</html>

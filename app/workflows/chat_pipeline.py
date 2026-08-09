@@ -76,6 +76,10 @@ class ChatPipeline:
             }
         
         # Step 2: Generate response
+        # Check if this is a summary-type query
+        query_analysis = self.retrieval_pipeline.query_analyzer.analyze_query(query)
+        is_summary = query_analysis['is_summary']
+        
         if conversation_history:
             response = self.response_generator.generate_chat_response(
                 query=query,
@@ -87,7 +91,16 @@ class ChatPipeline:
                 query=query,
                 context=retrieval_result['context'],
                 citations=retrieval_result['citations'],
+                is_summary=is_summary,
             )
+        
+        # Step 2.5: Improve answer formatting
+        if response.get('success'):
+            formatted_answer = self.response_generator.format_answer_structure(
+                response['answer'], 
+                is_summary=is_summary
+            )
+            response['answer'] = formatted_answer
         
         # Step 3: Build citations
         citation_objects = self.citation_builder.build_citation_objects(retrieval_result['citations'])

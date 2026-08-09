@@ -51,12 +51,18 @@ class DenseSearch:
         qdrant_filter = self.payload_builder.build_qdrant_filter(tenant_id=tenant_id)
         
         # Search in Qdrant
+        logger.info(f"Searching Qdrant collection: {collection_name}")
+        logger.info(f"Query vector dimension: {len(query_vector)}")
+        logger.info(f"Limit: {limit}")
+        
         results = self.qdrant.search(
             collection_name=collection_name,
             query_vector=query_vector,
             limit=limit,
             filter=qdrant_filter,
         )
+        
+        logger.info(f"Qdrant returned {len(results)} raw results")
         
         # Format results
         formatted_results = []
@@ -73,7 +79,7 @@ class DenseSearch:
                 'heading': metadata.get('heading')
             })
         
-        logger.info(f"Found {len(formatted_results)} results")
+        logger.info(f"Formatted {len(formatted_results)} results")
         return formatted_results
     
     def search_all_collections(
@@ -200,9 +206,21 @@ class DenseSearch:
 
     def _get_query_vector(self, query: str, collection_name: str) -> List[float]:
         """Use CLIP text space for image collection; BGE/text model for others."""
+        logger.info(f"Getting query vector for collection: {collection_name}")
+        
         if collection_name == self.collection_manager.get_image_collection():
+            logger.info("Using image embedding for image collection")
             image_embedding = self.embedding_factory.get_image_embedding()
-            return image_embedding.embed_text_description(query)
+            vector = image_embedding.embed_text_description(query)
+            logger.info(f"Image embedding vector dimension: {len(vector)}")
+            return vector
 
+        logger.info("Using text embedding for text/table/multimodal collection")
         text_embedding = self.embedding_factory.get_text_embedding()
-        return text_embedding.embed_query(query)
+        logger.info(f"Text embedding model: {text_embedding.model_name}")
+        logger.info(f"Text embedding vector dimension: {text_embedding.get_embedding_dimension()}")
+        
+        vector = text_embedding.embed_query(query)
+        logger.info(f"Generated query vector dimension: {len(vector)}")
+        
+        return vector
