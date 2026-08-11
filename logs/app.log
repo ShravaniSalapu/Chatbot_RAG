@@ -31828,3 +31828,1135 @@ T...
 
 The key details about the SRS from the ...
 2026-08-09 23:46:06 | INFO     | __main__:shutdown_event:134 - Shutting down KNOWA AI System
+2026-08-11 21:24:35 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:24:35 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:24:35 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:24:36 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:24:36 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:24:36 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:24:36 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:24:37 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:24:37 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:24:37 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:24:37 | INFO     | app.reranking.bge_reranker:_load_model:43 - Loading reranker model: BAAI/bge-reranker-base
+2026-08-11 21:24:48 | INFO     | app.reranking.bge_reranker:_load_model:46 - Reranker model loaded successfully
+2026-08-11 21:24:48 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 21:24:48 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 21:24:48 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 21:24:56 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:24:57 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:24:57 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:24:59 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:24:59 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:25:00 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:25:00 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:25:01 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:25:01 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:25:02 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:25:02 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 21:25:02 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 21:25:02 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 21:25:02 | INFO     | app.monitoring.prometheus:setup_prometheus:40 - Prometheus metrics exposed at /metrics
+2026-08-11 21:25:02 | INFO     | __main__:startup_event:93 - Starting KNOWA AI System
+2026-08-11 21:25:02 | INFO     | app.db.database:init_db:45 - Database tables initialized
+2026-08-11 21:25:02 | INFO     | __main__:startup_event:97 - PostgreSQL initialized
+2026-08-11 21:25:02 | INFO     | app.cache.redis_client:__init__:27 - Connected to Redis
+2026-08-11 21:25:02 | INFO     | __main__:startup_event:102 - Redis connected
+2026-08-11 21:25:02 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:25:04 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:25:04 | INFO     | app.embeddings.text_embedding:_load_model:33 - Loading text embedding model: BAAI/bge-m3
+2026-08-11 21:25:15 | INFO     | app.embeddings.text_embedding:_load_model:36 - Text embedding model loaded successfully
+2026-08-11 21:25:15 | INFO     | app.embeddings.embedding_factory:get_text_embedding:38 - Created text embedding with model: BAAI/bge-m3
+2026-08-11 21:25:15 | INFO     | app.embeddings.image_embedding:_load_model:47 - Loading image embedding model: clip-ViT-B-32
+2026-08-11 21:25:27 | INFO     | app.embeddings.image_embedding:_load_model:51 - Image embedding model loaded successfully
+2026-08-11 21:25:27 | INFO     | app.embeddings.embedding_factory:get_image_embedding:57 - Created image embedding with model: clip-ViT-B-32
+2026-08-11 21:25:27 | INFO     | app.vectorstore.collections:initialize_all_collections:40 - Initializing all collections
+2026-08-11 21:25:27 | INFO     | app.vectorstore.collections:initialize_all_collections:58 - Collection text_chunks already exists
+2026-08-11 21:25:27 | INFO     | app.vectorstore.collections:initialize_all_collections:58 - Collection image_chunks already exists
+2026-08-11 21:25:27 | INFO     | app.vectorstore.collections:initialize_all_collections:58 - Collection table_chunks already exists
+2026-08-11 21:25:27 | INFO     | app.vectorstore.collections:initialize_all_collections:58 - Collection multimodal_chunks already exists
+2026-08-11 21:25:27 | INFO     | __main__:startup_event:111 - Collections initialized successfully
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 1778dac7-7149-4119-bed9-248074a376ea
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 101 chunks
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: e0d361bb-1a8a-4461-b780-535eabf5c518
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 101 chunks
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 2 chunks
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 7467c35f-87fa-499a-a952-18a73a2f89ee
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 101 chunks
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 8c1192c1-5037-464c-88c1-7159883ad11e
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 2 chunks
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: b208730e-1408-4bc2-95c9-fe148593a197
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 101 chunks
+2026-08-11 21:25:27 | INFO     | app.retrieval.bm25_store:hydrate_bm25_from_redis:38 - Hydrated 6 BM25 index(es) from Redis
+2026-08-11 21:25:27 | INFO     | __main__:startup_event:118 - BM25 hydrated from Redis (6 document(s))
+2026-08-11 21:25:27 | INFO     | app.storage.minio_client:__init__:37 - MinIO connected (bucket=enterprise-rag)
+2026-08-11 21:25:27 | INFO     | __main__:startup_event:126 - MinIO object storage connected
+2026-08-11 21:25:50 | INFO     | app.services.audit_service:log_audit:53 - audit action=login tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=user/023fb951-005b-4728-a75b-34b64fa06f51
+2026-08-11 21:25:56 | INFO     | app.api.chat:chat:49 - Received chat query: hii (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 21:25:56 | INFO     | app.workflows.chat_pipeline:chat:52 - Chat pipeline for query: hii
+2026-08-11 21:25:56 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'hii', 'is_summary': False, 'is_fact': False, 'query_type': 'general', 'retrieval_config': {'candidate_count': 20, 'final_count': 8, 'use_parent_context': True, 'context_window': 'balanced', 'priority_sections': False}}
+2026-08-11 21:25:56 | INFO     | app.workflows.retrieval_pipeline:retrieve:75 - === RETRIEVAL PIPELINE START ===
+2026-08-11 21:25:56 | INFO     | app.workflows.retrieval_pipeline:retrieve:76 - Query: hii
+2026-08-11 21:25:56 | INFO     | app.workflows.retrieval_pipeline:retrieve:77 - Method: hybrid
+2026-08-11 21:25:56 | INFO     | app.workflows.retrieval_pipeline:retrieve:78 - Query type: general
+2026-08-11 21:25:56 | INFO     | app.workflows.retrieval_pipeline:retrieve:79 - Document ID: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:25:56 | INFO     | app.workflows.retrieval_pipeline:retrieve:80 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:25:56 | INFO     | app.workflows.retrieval_pipeline:retrieve:81 - Allowed document IDs: None
+2026-08-11 21:25:56 | INFO     | app.workflows.retrieval_pipeline:retrieve:100 - Retrieval config: candidate_count=20, final_count=8, use_parent_context=True
+2026-08-11 21:25:56 | INFO     | app.retrieval.hybrid_search:search:36 - === HYBRID SEARCH START ===
+2026-08-11 21:25:56 | INFO     | app.retrieval.hybrid_search:search:37 - Query: hii
+2026-08-11 21:25:56 | INFO     | app.retrieval.hybrid_search:search:38 - Document ID: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:25:56 | INFO     | app.retrieval.hybrid_search:search:39 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:25:56 | INFO     | app.retrieval.hybrid_search:search:40 - Alpha: 0.6
+2026-08-11 21:25:56 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:25:56 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: text_chunks
+2026-08-11 21:25:56 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:25:56 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:25:56 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:25:59 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:25:59 | INFO     | app.retrieval.bm25_search:search:118 - Performing BM25 search for query: hii
+2026-08-11 21:25:59 | INFO     | app.retrieval.bm25_search:search:156 - Found 0 BM25 results
+2026-08-11 21:25:59 | INFO     | app.retrieval.hybrid_search:search:81 - Found 2 hybrid results
+2026-08-11 21:25:59 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:26:00 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:26:00 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:26:00 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 21:26:00 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:26:00 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:26:00 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:26:01 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:26:01 | INFO     | app.reranking.rerank_pipeline:rerank_results:32 - Reranking pipeline processing 2 results
+2026-08-11 21:26:01 | INFO     | app.reranking.bge_reranker:rerank:66 - Reranking 2 results
+2026-08-11 21:26:06 | INFO     | app.reranking.bge_reranker:rerank:93 - Reranked to 2 results
+2026-08-11 21:26:06 | INFO     | app.retrieval.parent_retriever:enhance_results_with_siblings:218 - Enhancing 2 results with sibling context
+2026-08-11 21:26:06 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 40f6277c-2fb0-4834-8a90-b8acc33b7be8
+2026-08-11 21:26:06 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 098e3644-9433-4b29-8542-fb09d817b1da
+2026-08-11 21:26:06 | INFO     | app.context_builder.token_optimizer:optimize_context:29 - Optimizing context to fit 6000 tokens
+2026-08-11 21:26:06 | INFO     | app.context_builder.token_optimizer:_optimize_simple:72 - Optimized from 2 to 2 results (331 tokens)
+2026-08-11 21:26:06 | INFO     | app.context_builder.context_assembler:assemble_context_with_citations:72 - Assembling context with citations from 2 results
+2026-08-11 21:26:06 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'hii', 'is_summary': False, 'is_fact': False, 'query_type': 'general', 'retrieval_config': {'candidate_count': 20, 'final_count': 8, 'use_parent_context': True, 'context_window': 'balanced', 'priority_sections': False}}
+2026-08-11 21:26:06 | INFO     | app.llm.response_generator:generate_rag_response:43 - Generating RAG response for query: hii, is_summary: False
+2026-08-11 21:26:06 | ERROR    | app.llm.response_generator:generate_rag_response:72 - Error generating response: OPENROUTER_API_KEY not configured
+2026-08-11 21:26:06 | INFO     | app.llm.citation_builder:add_citations_to_answer:39 - Adding 2 citations to answer
+2026-08-11 21:26:06 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 21:26:06 | ERROR    | app.llm.hallucination_checker:_check_with_llm:55 - Error checking hallucinations with LLM: OPENROUTER_API_KEY not configured
+2026-08-11 21:26:06 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 21:26:06 | INFO     | app.services.audit_service:log_audit:53 - audit action=chat tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:26:22 | INFO     | app.api.chat:chat:49 - Received chat query: summarize my document and give me (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 21:26:22 | INFO     | app.workflows.chat_pipeline:chat:52 - Chat pipeline for query: summarize my document and give me
+2026-08-11 21:26:22 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'summarize my document and give me', 'is_summary': True, 'is_fact': False, 'query_type': 'summary', 'retrieval_config': {'candidate_count': 30, 'final_count': 12, 'use_parent_context': True, 'context_window': 'wide', 'priority_sections': True}}
+2026-08-11 21:26:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:75 - === RETRIEVAL PIPELINE START ===
+2026-08-11 21:26:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:76 - Query: summarize my document and give me
+2026-08-11 21:26:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:77 - Method: hybrid
+2026-08-11 21:26:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:78 - Query type: summary
+2026-08-11 21:26:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:79 - Document ID: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:26:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:80 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:26:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:81 - Allowed document IDs: None
+2026-08-11 21:26:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:100 - Retrieval config: candidate_count=30, final_count=12, use_parent_context=True
+2026-08-11 21:26:22 | INFO     | app.retrieval.hybrid_search:search:36 - === HYBRID SEARCH START ===
+2026-08-11 21:26:22 | INFO     | app.retrieval.hybrid_search:search:37 - Query: summarize my document and give me
+2026-08-11 21:26:22 | INFO     | app.retrieval.hybrid_search:search:38 - Document ID: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:26:22 | INFO     | app.retrieval.hybrid_search:search:39 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:26:22 | INFO     | app.retrieval.hybrid_search:search:40 - Alpha: 0.6
+2026-08-11 21:26:22 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:26:22 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: text_chunks
+2026-08-11 21:26:22 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:26:22 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:26:22 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:26:22 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:26:22 | INFO     | app.retrieval.bm25_search:search:118 - Performing BM25 search for query: summarize my document and give me
+2026-08-11 21:26:22 | INFO     | app.retrieval.bm25_search:search:156 - Found 0 BM25 results
+2026-08-11 21:26:22 | INFO     | app.retrieval.hybrid_search:search:81 - Found 2 hybrid results
+2026-08-11 21:26:22 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:26:24 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:26:24 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:26:24 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 21:26:24 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:26:24 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:26:24 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:26:24 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:26:24 | INFO     | app.retrieval.bm25_search:search_section_context:383 - Section search found 0 chunks for: summarize my document and give me module
+2026-08-11 21:26:24 | INFO     | app.retrieval.bm25_search:search_by_phrase:220 - Phrase search found 0 chunks
+2026-08-11 21:26:24 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:26:25 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:26:25 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:26:25 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 21:26:25 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:26:25 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:26:25 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:26:26 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:26:26 | INFO     | app.retrieval.bm25_search:search_model_metric:684 - Model-metric search found 2 chunks for: ['summarize', 'document', 'give']
+2026-08-11 21:26:26 | INFO     | app.retrieval.parent_retriever:enhance_results_with_siblings:218 - Enhancing 2 results with sibling context
+2026-08-11 21:26:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 098e3644-9433-4b29-8542-fb09d817b1da
+2026-08-11 21:26:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 40f6277c-2fb0-4834-8a90-b8acc33b7be8
+2026-08-11 21:26:26 | INFO     | app.context_builder.context_assembler:assemble_context_with_citations:72 - Assembling context with citations from 2 results
+2026-08-11 21:26:26 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'summarize my document and give me', 'is_summary': True, 'is_fact': False, 'query_type': 'summary', 'retrieval_config': {'candidate_count': 30, 'final_count': 12, 'use_parent_context': True, 'context_window': 'wide', 'priority_sections': True}}
+2026-08-11 21:26:26 | INFO     | app.llm.response_generator:generate_chat_response:112 - Generating chat response for query: summarize my document and give me
+2026-08-11 21:26:26 | ERROR    | app.llm.response_generator:generate_chat_response:138 - Error generating chat response: OPENROUTER_API_KEY not configured
+2026-08-11 21:26:26 | INFO     | app.llm.citation_builder:add_citations_to_answer:39 - Adding 2 citations to answer
+2026-08-11 21:26:26 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 21:26:26 | ERROR    | app.llm.hallucination_checker:_check_with_llm:55 - Error checking hallucinations with LLM: OPENROUTER_API_KEY not configured
+2026-08-11 21:26:26 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 21:26:26 | INFO     | app.services.audit_service:log_audit:53 - audit action=chat tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:26:41 | INFO     | app.api.agent:agent_chat:35 - Agent query: summarize my document and give me (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 21:28:11 | INFO     | __main__:shutdown_event:134 - Shutting down KNOWA AI System
+2026-08-11 21:28:36 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:37 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:37 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:37 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:37 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:37 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:37 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:38 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:38 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:38 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:38 | INFO     | app.reranking.bge_reranker:_load_model:43 - Loading reranker model: BAAI/bge-reranker-base
+2026-08-11 21:28:48 | INFO     | app.reranking.bge_reranker:_load_model:46 - Reranker model loaded successfully
+2026-08-11 21:28:50 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:50 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:50 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:51 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:51 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:51 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:51 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:51 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:51 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:52 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:52 | INFO     | app.monitoring.prometheus:setup_prometheus:40 - Prometheus metrics exposed at /metrics
+2026-08-11 21:28:52 | INFO     | __main__:startup_event:93 - Starting KNOWA AI System
+2026-08-11 21:28:52 | INFO     | app.db.database:init_db:45 - Database tables initialized
+2026-08-11 21:28:52 | INFO     | __main__:startup_event:97 - PostgreSQL initialized
+2026-08-11 21:28:52 | INFO     | app.cache.redis_client:__init__:27 - Connected to Redis
+2026-08-11 21:28:52 | INFO     | __main__:startup_event:102 - Redis connected
+2026-08-11 21:28:52 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:28:52 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:28:52 | INFO     | app.embeddings.text_embedding:_load_model:33 - Loading text embedding model: BAAI/bge-m3
+2026-08-11 21:29:02 | INFO     | app.embeddings.text_embedding:_load_model:36 - Text embedding model loaded successfully
+2026-08-11 21:29:02 | INFO     | app.embeddings.embedding_factory:get_text_embedding:38 - Created text embedding with model: BAAI/bge-m3
+2026-08-11 21:29:02 | INFO     | app.embeddings.image_embedding:_load_model:47 - Loading image embedding model: clip-ViT-B-32
+2026-08-11 21:29:14 | INFO     | app.embeddings.image_embedding:_load_model:51 - Image embedding model loaded successfully
+2026-08-11 21:29:14 | INFO     | app.embeddings.embedding_factory:get_image_embedding:57 - Created image embedding with model: clip-ViT-B-32
+2026-08-11 21:29:14 | INFO     | app.vectorstore.collections:initialize_all_collections:40 - Initializing all collections
+2026-08-11 21:29:14 | INFO     | app.vectorstore.collections:initialize_all_collections:58 - Collection text_chunks already exists
+2026-08-11 21:29:14 | INFO     | app.vectorstore.collections:initialize_all_collections:58 - Collection image_chunks already exists
+2026-08-11 21:29:14 | INFO     | app.vectorstore.collections:initialize_all_collections:58 - Collection table_chunks already exists
+2026-08-11 21:29:14 | INFO     | app.vectorstore.collections:initialize_all_collections:58 - Collection multimodal_chunks already exists
+2026-08-11 21:29:14 | INFO     | __main__:startup_event:111 - Collections initialized successfully
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: e0d361bb-1a8a-4461-b780-535eabf5c518
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 101 chunks
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 8c1192c1-5037-464c-88c1-7159883ad11e
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 2 chunks
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: b208730e-1408-4bc2-95c9-fe148593a197
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 101 chunks
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 7467c35f-87fa-499a-a952-18a73a2f89ee
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 101 chunks
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 1778dac7-7149-4119-bed9-248074a376ea
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 101 chunks
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 2 chunks
+2026-08-11 21:29:14 | INFO     | app.retrieval.bm25_store:hydrate_bm25_from_redis:38 - Hydrated 6 BM25 index(es) from Redis
+2026-08-11 21:29:14 | INFO     | __main__:startup_event:118 - BM25 hydrated from Redis (6 document(s))
+2026-08-11 21:29:14 | INFO     | app.storage.minio_client:__init__:37 - MinIO connected (bucket=enterprise-rag)
+2026-08-11 21:29:14 | INFO     | __main__:startup_event:126 - MinIO object storage connected
+2026-08-11 21:29:22 | INFO     | app.api.chat:chat:49 - Received chat query: summarize my document and give me (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 21:29:22 | INFO     | app.workflows.chat_pipeline:chat:52 - Chat pipeline for query: summarize my document and give me
+2026-08-11 21:29:22 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'summarize my document and give me', 'is_summary': True, 'is_fact': False, 'query_type': 'summary', 'retrieval_config': {'candidate_count': 30, 'final_count': 12, 'use_parent_context': True, 'context_window': 'wide', 'priority_sections': True}}
+2026-08-11 21:29:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:75 - === RETRIEVAL PIPELINE START ===
+2026-08-11 21:29:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:76 - Query: summarize my document and give me
+2026-08-11 21:29:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:77 - Method: hybrid
+2026-08-11 21:29:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:78 - Query type: summary
+2026-08-11 21:29:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:79 - Document ID: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:29:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:80 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:29:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:81 - Allowed document IDs: None
+2026-08-11 21:29:22 | INFO     | app.workflows.retrieval_pipeline:retrieve:100 - Retrieval config: candidate_count=30, final_count=12, use_parent_context=True
+2026-08-11 21:29:22 | INFO     | app.retrieval.hybrid_search:search:36 - === HYBRID SEARCH START ===
+2026-08-11 21:29:22 | INFO     | app.retrieval.hybrid_search:search:37 - Query: summarize my document and give me
+2026-08-11 21:29:22 | INFO     | app.retrieval.hybrid_search:search:38 - Document ID: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:29:22 | INFO     | app.retrieval.hybrid_search:search:39 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:29:22 | INFO     | app.retrieval.hybrid_search:search:40 - Alpha: 0.6
+2026-08-11 21:29:22 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:29:22 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: text_chunks
+2026-08-11 21:29:22 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:29:22 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:29:22 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:29:23 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:29:23 | INFO     | app.retrieval.bm25_search:search:118 - Performing BM25 search for query: summarize my document and give me
+2026-08-11 21:29:23 | INFO     | app.retrieval.bm25_search:search:156 - Found 0 BM25 results
+2026-08-11 21:29:23 | INFO     | app.retrieval.hybrid_search:search:81 - Found 2 hybrid results
+2026-08-11 21:29:23 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:29:24 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:29:24 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:29:24 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 21:29:24 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:29:24 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:29:24 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:29:24 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:29:24 | INFO     | app.retrieval.bm25_search:search_section_context:383 - Section search found 0 chunks for: summarize my document and give me module
+2026-08-11 21:29:24 | INFO     | app.retrieval.bm25_search:search_by_phrase:220 - Phrase search found 0 chunks
+2026-08-11 21:29:24 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:29:25 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:29:25 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:29:25 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 21:29:25 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:29:25 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:29:25 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:29:25 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:29:25 | INFO     | app.retrieval.bm25_search:search_model_metric:684 - Model-metric search found 2 chunks for: ['summarize', 'document', 'give']
+2026-08-11 21:29:25 | INFO     | app.retrieval.parent_retriever:enhance_results_with_siblings:218 - Enhancing 2 results with sibling context
+2026-08-11 21:29:25 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 098e3644-9433-4b29-8542-fb09d817b1da
+2026-08-11 21:29:25 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 40f6277c-2fb0-4834-8a90-b8acc33b7be8
+2026-08-11 21:29:25 | INFO     | app.context_builder.context_assembler:assemble_context_with_citations:72 - Assembling context with citations from 2 results
+2026-08-11 21:29:25 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'summarize my document and give me', 'is_summary': True, 'is_fact': False, 'query_type': 'summary', 'retrieval_config': {'candidate_count': 30, 'final_count': 12, 'use_parent_context': True, 'context_window': 'wide', 'priority_sections': True}}
+2026-08-11 21:29:25 | INFO     | app.llm.response_generator:generate_rag_response:43 - Generating RAG response for query: summarize my document and give me, is_summary: True
+2026-08-11 21:29:34 | INFO     | app.llm.response_generator:generate_rag_response:60 - Generated response in 8.23s
+2026-08-11 21:29:34 | INFO     | app.llm.citation_builder:add_citations_to_answer:39 - Adding 2 citations to answer
+2026-08-11 21:29:34 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 21:29:38 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 21:29:38 | INFO     | app.services.audit_service:log_audit:53 - audit action=chat tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/0a35907e-3260-4316-bac4-061bc25bdced
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:42 - === WIDGET CHAT REQUEST ===
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:43 - Embed token: d07a770f31f54d8194ee8925e5542ecb
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:44 - Query: summarize my document and give me
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:48 - Conversation history messages: 0
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:75 - Chatbot found: 7c231d4e-b8fb-4818-849d-7ba9b11d3bdd, name: Enterprise AI Chatbot
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:80 - Chatbot tenant_id: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:107 - Attached document_id: e0d361bb-1a8a-4461-b780-535eabf5c518
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:120 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:135 - Embedding dimension: 1024
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:160 - Retrieval method: hybrid
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:164 - TOP_K: 8
+2026-08-11 21:30:04 | INFO     | app.api.widget_chat:widget_chat:186 - Calling ChatPipeline.chat()...
+2026-08-11 21:30:04 | INFO     | app.workflows.chat_pipeline:chat:52 - Chat pipeline for query: summarize my document and give me
+2026-08-11 21:30:04 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'summarize my document and give me', 'is_summary': True, 'is_fact': False, 'query_type': 'summary', 'retrieval_config': {'candidate_count': 30, 'final_count': 12, 'use_parent_context': True, 'context_window': 'wide', 'priority_sections': True}}
+2026-08-11 21:30:04 | INFO     | app.workflows.retrieval_pipeline:retrieve:75 - === RETRIEVAL PIPELINE START ===
+2026-08-11 21:30:04 | INFO     | app.workflows.retrieval_pipeline:retrieve:76 - Query: summarize my document and give me
+2026-08-11 21:30:04 | INFO     | app.workflows.retrieval_pipeline:retrieve:77 - Method: hybrid
+2026-08-11 21:30:04 | INFO     | app.workflows.retrieval_pipeline:retrieve:78 - Query type: summary
+2026-08-11 21:30:04 | INFO     | app.workflows.retrieval_pipeline:retrieve:79 - Document ID: e0d361bb-1a8a-4461-b780-535eabf5c518
+2026-08-11 21:30:04 | INFO     | app.workflows.retrieval_pipeline:retrieve:80 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:30:04 | INFO     | app.workflows.retrieval_pipeline:retrieve:81 - Allowed document IDs: None
+2026-08-11 21:30:04 | INFO     | app.workflows.retrieval_pipeline:retrieve:100 - Retrieval config: candidate_count=30, final_count=8, use_parent_context=True
+2026-08-11 21:30:04 | INFO     | app.retrieval.hybrid_search:search:36 - === HYBRID SEARCH START ===
+2026-08-11 21:30:04 | INFO     | app.retrieval.hybrid_search:search:37 - Query: summarize my document and give me
+2026-08-11 21:30:04 | INFO     | app.retrieval.hybrid_search:search:38 - Document ID: e0d361bb-1a8a-4461-b780-535eabf5c518
+2026-08-11 21:30:04 | INFO     | app.retrieval.hybrid_search:search:39 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 21:30:04 | INFO     | app.retrieval.hybrid_search:search:40 - Alpha: 0.6
+2026-08-11 21:30:04 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: e0d361bb-1a8a-4461-b780-535eabf5c518
+2026-08-11 21:30:04 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: text_chunks
+2026-08-11 21:30:04 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:30:04 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:30:04 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:30:05 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:30:05 | INFO     | app.retrieval.bm25_search:search:118 - Performing BM25 search for query: summarize my document and give me
+2026-08-11 21:30:05 | INFO     | app.retrieval.bm25_search:search:156 - Found 0 BM25 results
+2026-08-11 21:30:05 | INFO     | app.retrieval.hybrid_search:search:81 - Found 8 hybrid results
+2026-08-11 21:30:05 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:30:05 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:30:05 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: e0d361bb-1a8a-4461-b780-535eabf5c518
+2026-08-11 21:30:05 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 21:30:05 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:30:05 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:30:05 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:30:05 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:30:06 | INFO     | app.retrieval.bm25_search:search_section_context:383 - Section search found 0 chunks for: summarize my document and give me module
+2026-08-11 21:30:06 | INFO     | app.retrieval.bm25_search:search_by_phrase:220 - Phrase search found 0 chunks
+2026-08-11 21:30:06 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 21:30:06 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 21:30:06 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: e0d361bb-1a8a-4461-b780-535eabf5c518
+2026-08-11 21:30:06 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 21:30:06 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 21:30:06 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 21:30:06 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 21:30:07 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 21:30:07 | INFO     | app.retrieval.bm25_search:search_model_metric:684 - Model-metric search found 99 chunks for: ['summarize', 'document', 'give']
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:enhance_results_with_siblings:218 - Enhancing 8 results with sibling context
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 617e8f1f-c853-4c39-b536-e770e3571ba5
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: fed53b55-f199-4cf3-9815-509169c08888
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: d0a7a571-9e88-4131-afcd-96bb97769533
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 6d67114c-4936-4c61-99aa-859ba20ddd61
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: ed8c66b9-a9f8-450d-8f61-b873d63f0090
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 416b6c1f-e9f4-4d16-ad1c-4121277615fd
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: a110a2af-cf3d-43e2-9bcc-62a131609ba9
+2026-08-11 21:30:07 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: bc29d221-d50a-410e-a55c-188a2661e652
+2026-08-11 21:30:07 | INFO     | app.context_builder.context_assembler:assemble_context_with_citations:72 - Assembling context with citations from 8 results
+2026-08-11 21:30:07 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'summarize my document and give me', 'is_summary': True, 'is_fact': False, 'query_type': 'summary', 'retrieval_config': {'candidate_count': 30, 'final_count': 12, 'use_parent_context': True, 'context_window': 'wide', 'priority_sections': True}}
+2026-08-11 21:30:07 | INFO     | app.llm.response_generator:generate_rag_response:43 - Generating RAG response for query: summarize my document and give me, is_summary: True
+2026-08-11 21:30:16 | INFO     | app.llm.response_generator:generate_rag_response:60 - Generated response in 9.26s
+2026-08-11 21:30:16 | INFO     | app.llm.citation_builder:add_citations_to_answer:39 - Adding 5 citations to answer
+2026-08-11 21:30:16 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 21:30:18 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 21:30:18 | INFO     | app.api.widget_chat:widget_chat:205 - ChatPipeline result keys: dict_keys(['answer', 'sources', 'citations', 'confidence_score', 'processing_time_ms', 'model_used', 'retrieval_method', 'has_hallucination', 'hallucination_details', 'context_used'])
+2026-08-11 21:30:18 | INFO     | app.api.widget_chat:widget_chat:215 - Answer length: 2904
+2026-08-11 21:30:18 | INFO     | app.api.widget_chat:widget_chat:219 - Answer preview: ## Overview/Purpose
+### The provided context describes the specifications and requirements for a multi-tenant AI chatbot SaaS (Software-as-a-Service) platform [2]. The platform is intended to provide ...
+2026-08-11 21:45:16 | INFO     | app.services.audit_service:log_audit:53 - audit action=login tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=user/023fb951-005b-4728-a75b-34b64fa06f51
+2026-08-11 21:47:08 | INFO     | app.services.audit_service:log_audit:53 - audit action=login tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=user/023fb951-005b-4728-a75b-34b64fa06f51
+2026-08-11 21:58:16 | INFO     | app.services.audit_service:log_audit:53 - audit action=login tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=user/023fb951-005b-4728-a75b-34b64fa06f51
+2026-08-11 21:58:56 | INFO     | app.services.audit_service:log_audit:53 - audit action=login tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=user/023fb951-005b-4728-a75b-34b64fa06f51
+2026-08-11 22:31:55 | INFO     | app.services.audit_service:log_audit:53 - audit action=login tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=user/023fb951-005b-4728-a75b-34b64fa06f51
+2026-08-11 23:34:32 | INFO     | app.api.upload:upload_document:71 - Received file upload: Enterprise_Multimodal_RAG_Chatbot_Progress_Report.docx (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:34:32 | INFO     | app.storage.minio_client:upload_bytes:81 - Uploaded to MinIO: dd1e5cfe-dcca-483c-a882-219acc575d84/11844ae7-122b-4664-a632-c975d867563d/Enterprise_Multimodal_RAG_Chatbot_Progress_Report.docx
+2026-08-11 23:34:32 | INFO     | app.services.audit_service:log_audit:53 - audit action=upload tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:33 | INFO     | app.api.upload:_enqueue_processing:48 - Enqueued Celery task for document 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:33 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:35 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:37 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:39 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:41 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:43 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:46 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:48 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:50 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:52 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:53 | INFO     | app.storage.minio_client:__init__:37 - MinIO connected (bucket=enterprise-rag)
+2026-08-11 23:34:53 | INFO     | app.tasks.document_tasks:process_document_task:36 - Celery task processing document 11844ae7-122b-4664-a632-c975d867563d (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:34:53 | INFO     | app.cache.redis_client:__init__:27 - Connected to Redis
+2026-08-11 23:34:54 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:54 | INFO     | app.workflows.document_pipeline:process_document:175 - Starting document pipeline for 11844ae7-122b-4664-a632-c975d867563d (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:34:54 | INFO     | app.workflows.ingestion_pipeline:__init__:66 - Ingestion pipeline initialized with Docling: False, Unstructured: False, OCR: auto (lazy)
+2026-08-11 23:34:54 | INFO     | app.workflows.ingestion_pipeline:ingest_document:86 - Starting ingestion pipeline for: C:\Users\Sravani\AppData\Local\Temp\tmpgzvv9tsl.docx
+2026-08-11 23:34:54 | INFO     | app.ingestion.loaders.docx_loader:load:32 - Loading DOCX file: C:\Users\Sravani\AppData\Local\Temp\tmpgzvv9tsl.docx
+2026-08-11 23:34:54 | INFO     | app.ingestion.parsers.layout_parser:parse:27 - Parsing document layout
+2026-08-11 23:34:54 | INFO     | app.workflows.ingestion_pipeline:_parse_document:213 - Using layout parser as fallback
+2026-08-11 23:34:54 | INFO     | app.ingestion.content_extractor:extract:61 - Extracted 0 tables and 0 images (0 charts)
+2026-08-11 23:34:54 | INFO     | app.document_structure.heading_detector:detect_headings:49 - Detecting headings in document
+2026-08-11 23:34:54 | INFO     | app.document_structure.heading_detector:detect_headings:65 - Detected 0 headings
+2026-08-11 23:34:54 | INFO     | app.document_structure.section_detector:detect_sections:28 - Detecting document sections
+2026-08-11 23:34:54 | INFO     | app.document_structure.caption_linker:detect_captions:37 - Detecting captions in document
+2026-08-11 23:34:54 | INFO     | app.document_structure.caption_linker:detect_captions:53 - Detected 0 captions
+2026-08-11 23:34:54 | INFO     | app.document_structure.caption_linker:link_all_captions:138 - Linking captions to elements
+2026-08-11 23:34:54 | INFO     | app.document_structure.caption_linker:link_all_captions:154 - Linked 0 captions to elements
+2026-08-11 23:34:54 | INFO     | app.document_structure.table_context_linker:link_table_context:28 - Linking table context
+2026-08-11 23:34:54 | INFO     | app.document_structure.table_context_linker:link_table_context:43 - Linked context for 0 tables
+2026-08-11 23:34:54 | INFO     | app.document_structure.image_context_linker:link_image_context:28 - Linking image context
+2026-08-11 23:34:54 | INFO     | app.document_structure.image_context_linker:link_image_context:43 - Linked context for 0 images
+2026-08-11 23:34:54 | INFO     | app.document_structure.metadata_builder:build_document_metadata:29 - Building document metadata
+2026-08-11 23:34:54 | INFO     | app.document_structure.metadata_builder:build_document_metadata:65 - Built metadata for document: tmpgzvv9tsl.docx
+2026-08-11 23:34:54 | INFO     | app.workflows.ingestion_pipeline:ingest_document:155 - Ingestion pipeline completed for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:54 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:34:55 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:34:55 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:34:55 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:34:55 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:34:55 | INFO     | app.workflows.indexing_pipeline:index_document:64 - Starting indexing pipeline for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:55 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:29 - Building document tree
+2026-08-11 23:34:55 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:59 - Document tree built successfully
+2026-08-11 23:34:55 | INFO     | app.chunking.parent_child_chunker:chunk:31 - Creating parent-child chunks for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:55 | INFO     | app.chunking.parent_child_chunker:chunk:78 - Created 84 chunks (1 parent, 83 child)
+2026-08-11 23:34:55 | INFO     | app.chunking.multimodal_chunker:chunk:31 - Creating multimodal chunks for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:55 | INFO     | app.chunking.multimodal_chunker:chunk:57 - Created 1 multimodal chunks
+2026-08-11 23:34:55 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:55 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 83 chunks
+2026-08-11 23:34:55 | INFO     | app.vectorstore.indexing:index_chunks:48 - Indexing 84 chunks
+2026-08-11 23:34:55 | INFO     | app.vectorstore.indexing:_index_text_chunks:105 - Indexing 83 text chunks in batches of 32
+2026-08-11 23:34:55 | INFO     | app.embeddings.text_embedding:_load_model:33 - Loading text embedding model: BAAI/bge-m3
+2026-08-11 23:34:56 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:34:58 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:00 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:02 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:04 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:06 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:06 | INFO     | app.embeddings.text_embedding:_load_model:36 - Text embedding model loaded successfully
+2026-08-11 23:35:06 | INFO     | app.embeddings.embedding_factory:get_text_embedding:38 - Created text embedding with model: BAAI/bge-m3
+2026-08-11 23:35:08 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:10 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:12 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:14 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:16 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:18 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:20 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:22 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:35:32 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:35:32 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:35:32 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 32/83 chunks
+2026-08-11 23:35:55 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:35:55 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:35:55 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 64/83 chunks
+2026-08-11 23:36:11 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 19 points into text_chunks
+2026-08-11 23:36:11 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 19 points
+2026-08-11 23:36:11 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 83/83 chunks
+2026-08-11 23:36:11 | INFO     | app.workflows.indexing_pipeline:index_document:130 - Indexing pipeline completed for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:36:11 | INFO     | app.workflows.document_pipeline:process_document:259 - Document pipeline completed for 11844ae7-122b-4664-a632-c975d867563d: {'document_id': '11844ae7-122b-4664-a632-c975d867563d', 'tenant_id': 'dd1e5cfe-dcca-483c-a882-219acc575d84', 'filename': 'Enterprise_Multimodal_RAG_Chatbot_Progress_Report.docx', 'status': 'completed', 'chunks_created': 83, 'tables_extracted': 0, 'images_extracted': 0, 'error_message': None}
+2026-08-11 23:39:07 | INFO     | app.api.widget_chat:widget_chat:42 - === WIDGET CHAT REQUEST ===
+2026-08-11 23:39:07 | INFO     | app.api.widget_chat:widget_chat:43 - Embed token: 36107f8427334c979778b4a837e8c356
+2026-08-11 23:39:07 | INFO     | app.api.widget_chat:widget_chat:44 - Query: tell me about my docment
+2026-08-11 23:39:07 | INFO     | app.api.widget_chat:widget_chat:48 - Conversation history messages: 0
+2026-08-11 23:39:07 | INFO     | app.api.widget_chat:widget_chat:75 - Chatbot found: 18f63395-2cc2-41a9-a530-9b649d67c92d, name: new
+2026-08-11 23:39:07 | INFO     | app.api.widget_chat:widget_chat:80 - Chatbot tenant_id: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:39:07 | ERROR    | app.api.widget_chat:widget_chat:97 - No document attached to chatbot: 18f63395-2cc2-41a9-a530-9b649d67c92d
+2026-08-11 23:39:19 | INFO     | app.api.widget_chat:widget_chat:42 - === WIDGET CHAT REQUEST ===
+2026-08-11 23:39:19 | INFO     | app.api.widget_chat:widget_chat:43 - Embed token: 36107f8427334c979778b4a837e8c356
+2026-08-11 23:39:19 | INFO     | app.api.widget_chat:widget_chat:44 - Query: summarize my document
+2026-08-11 23:39:19 | INFO     | app.api.widget_chat:widget_chat:48 - Conversation history messages: 0
+2026-08-11 23:39:19 | INFO     | app.api.widget_chat:widget_chat:75 - Chatbot found: 18f63395-2cc2-41a9-a530-9b649d67c92d, name: new
+2026-08-11 23:39:19 | INFO     | app.api.widget_chat:widget_chat:80 - Chatbot tenant_id: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:39:19 | ERROR    | app.api.widget_chat:widget_chat:97 - No document attached to chatbot: 18f63395-2cc2-41a9-a530-9b649d67c92d
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:42 - === WIDGET CHAT REQUEST ===
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:43 - Embed token: 36107f8427334c979778b4a837e8c356
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:44 - Query: summarize my document
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:48 - Conversation history messages: 0
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:75 - Chatbot found: 18f63395-2cc2-41a9-a530-9b649d67c92d, name: new
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:80 - Chatbot tenant_id: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:107 - Attached document_id: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:120 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:135 - Embedding dimension: 1024
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:160 - Retrieval method: hybrid
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:164 - TOP_K: 8
+2026-08-11 23:40:31 | INFO     | app.api.widget_chat:widget_chat:186 - Calling ChatPipeline.chat()...
+2026-08-11 23:40:31 | INFO     | app.workflows.chat_pipeline:chat:52 - Chat pipeline for query: summarize my document
+2026-08-11 23:40:31 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'summarize my document', 'is_summary': True, 'is_fact': False, 'query_type': 'summary', 'retrieval_config': {'candidate_count': 30, 'final_count': 12, 'use_parent_context': True, 'context_window': 'wide', 'priority_sections': True}}
+2026-08-11 23:40:31 | INFO     | app.workflows.retrieval_pipeline:retrieve:75 - === RETRIEVAL PIPELINE START ===
+2026-08-11 23:40:31 | INFO     | app.workflows.retrieval_pipeline:retrieve:76 - Query: summarize my document
+2026-08-11 23:40:31 | INFO     | app.workflows.retrieval_pipeline:retrieve:77 - Method: hybrid
+2026-08-11 23:40:31 | INFO     | app.workflows.retrieval_pipeline:retrieve:78 - Query type: summary
+2026-08-11 23:40:31 | INFO     | app.workflows.retrieval_pipeline:retrieve:79 - Document ID: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:40:31 | INFO     | app.workflows.retrieval_pipeline:retrieve:80 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:40:31 | INFO     | app.workflows.retrieval_pipeline:retrieve:81 - Allowed document IDs: None
+2026-08-11 23:40:31 | INFO     | app.workflows.retrieval_pipeline:retrieve:100 - Retrieval config: candidate_count=30, final_count=8, use_parent_context=True
+2026-08-11 23:40:31 | INFO     | app.retrieval.hybrid_search:search:36 - === HYBRID SEARCH START ===
+2026-08-11 23:40:31 | INFO     | app.retrieval.hybrid_search:search:37 - Query: summarize my document
+2026-08-11 23:40:31 | INFO     | app.retrieval.hybrid_search:search:38 - Document ID: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:40:31 | INFO     | app.retrieval.hybrid_search:search:39 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:40:31 | INFO     | app.retrieval.hybrid_search:search:40 - Alpha: 0.6
+2026-08-11 23:40:31 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:40:31 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: text_chunks
+2026-08-11 23:40:31 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 23:40:31 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:40:31 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 23:40:32 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 23:40:32 | INFO     | app.retrieval.bm25_search:search:118 - Performing BM25 search for query: summarize my document
+2026-08-11 23:40:32 | INFO     | app.retrieval.bm25_search:search:156 - Found 0 BM25 results
+2026-08-11 23:40:32 | INFO     | app.retrieval.hybrid_search:search:81 - Found 8 hybrid results
+2026-08-11 23:40:32 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:40:32 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:40:32 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:40:32 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 23:40:32 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 23:40:32 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:40:32 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 23:40:33 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 23:40:33 | INFO     | app.retrieval.bm25_search:search_section_context:383 - Section search found 0 chunks for: summarize my document module
+2026-08-11 23:40:33 | INFO     | app.retrieval.bm25_search:search_by_phrase:220 - Phrase search found 0 chunks
+2026-08-11 23:40:33 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:40:33 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:40:33 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:40:33 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 23:40:33 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 23:40:33 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:40:33 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 23:40:34 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 23:40:34 | INFO     | app.retrieval.bm25_search:search_model_metric:684 - Model-metric search found 0 chunks for: ['summarize', 'document']
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:enhance_results_with_siblings:218 - Enhancing 8 results with sibling context
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 51bd67db-5508-40a8-b1f2-34554cd47afd
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: b2f3916d-7147-4d25-b4d1-9f570586b716
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: d6681683-0f6e-4530-919d-ddbda5b753a0
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 9bdf147a-3ed3-4189-9e3e-3cc59ad26256
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 37f5e36b-d798-4a3a-828b-3d37a6c5bfb0
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 4b9bff08-300d-48ad-9293-f8ea62654583
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 4eea797a-2afa-4c10-9156-a96cb4c5f5ce
+2026-08-11 23:40:34 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: c264b9d5-5bab-45d4-aba9-ec4944c7c930
+2026-08-11 23:40:34 | INFO     | app.context_builder.context_assembler:assemble_context_with_citations:72 - Assembling context with citations from 8 results
+2026-08-11 23:40:34 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'summarize my document', 'is_summary': True, 'is_fact': False, 'query_type': 'summary', 'retrieval_config': {'candidate_count': 30, 'final_count': 12, 'use_parent_context': True, 'context_window': 'wide', 'priority_sections': True}}
+2026-08-11 23:40:34 | INFO     | app.llm.response_generator:generate_rag_response:43 - Generating RAG response for query: summarize my document, is_summary: True
+2026-08-11 23:40:41 | INFO     | app.llm.response_generator:generate_rag_response:60 - Generated response in 6.91s
+2026-08-11 23:40:41 | INFO     | app.llm.citation_builder:add_citations_to_answer:39 - Adding 1 citations to answer
+2026-08-11 23:40:41 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 23:40:42 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 23:40:42 | INFO     | app.api.widget_chat:widget_chat:205 - ChatPipeline result keys: dict_keys(['answer', 'sources', 'citations', 'confidence_score', 'processing_time_ms', 'model_used', 'retrieval_method', 'has_hallucination', 'hallucination_details', 'context_used'])
+2026-08-11 23:40:42 | INFO     | app.api.widget_chat:widget_chat:215 - Answer length: 2170
+2026-08-11 23:40:42 | INFO     | app.api.widget_chat:widget_chat:219 - Answer preview: ## Overview/Purpose
+## The provided context appears to be a summary of the development and current status of a backend system for a chatbot management and embed API. The system allows for user registr...
+2026-08-11 23:41:35 | INFO     | app.api.upload:upload_document:71 - Received file upload: Enterprise_AI_Chatbot_Platform_SDD.docx (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:41:35 | INFO     | app.storage.minio_client:upload_bytes:81 - Uploaded to MinIO: dd1e5cfe-dcca-483c-a882-219acc575d84/b1915024-077b-4130-a256-c536b059fa8b/Enterprise_AI_Chatbot_Platform_SDD.docx
+2026-08-11 23:41:35 | INFO     | app.services.audit_service:log_audit:53 - audit action=upload tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:35 | INFO     | app.api.upload:_enqueue_processing:48 - Enqueued Celery task for document b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:35 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:35 | INFO     | app.tasks.document_tasks:process_document_task:36 - Celery task processing document b1915024-077b-4130-a256-c536b059fa8b (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:41:35 | INFO     | app.workflows.document_pipeline:process_document:175 - Starting document pipeline for b1915024-077b-4130-a256-c536b059fa8b (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:41:35 | INFO     | app.workflows.ingestion_pipeline:__init__:66 - Ingestion pipeline initialized with Docling: False, Unstructured: False, OCR: auto (lazy)
+2026-08-11 23:41:35 | INFO     | app.workflows.ingestion_pipeline:ingest_document:86 - Starting ingestion pipeline for: C:\Users\Sravani\AppData\Local\Temp\tmpro74kab1.docx
+2026-08-11 23:41:35 | INFO     | app.ingestion.loaders.docx_loader:load:32 - Loading DOCX file: C:\Users\Sravani\AppData\Local\Temp\tmpro74kab1.docx
+2026-08-11 23:41:35 | INFO     | app.ingestion.parsers.layout_parser:parse:27 - Parsing document layout
+2026-08-11 23:41:35 | INFO     | app.workflows.ingestion_pipeline:_parse_document:213 - Using layout parser as fallback
+2026-08-11 23:41:35 | INFO     | app.ingestion.content_extractor:extract:61 - Extracted 0 tables and 0 images (0 charts)
+2026-08-11 23:41:35 | INFO     | app.document_structure.heading_detector:detect_headings:49 - Detecting headings in document
+2026-08-11 23:41:35 | INFO     | app.document_structure.heading_detector:detect_headings:65 - Detected 0 headings
+2026-08-11 23:41:35 | INFO     | app.document_structure.section_detector:detect_sections:28 - Detecting document sections
+2026-08-11 23:41:35 | INFO     | app.document_structure.caption_linker:detect_captions:37 - Detecting captions in document
+2026-08-11 23:41:35 | INFO     | app.document_structure.caption_linker:detect_captions:53 - Detected 0 captions
+2026-08-11 23:41:35 | INFO     | app.document_structure.caption_linker:link_all_captions:138 - Linking captions to elements
+2026-08-11 23:41:35 | INFO     | app.document_structure.caption_linker:link_all_captions:154 - Linked 0 captions to elements
+2026-08-11 23:41:35 | INFO     | app.document_structure.table_context_linker:link_table_context:28 - Linking table context
+2026-08-11 23:41:35 | INFO     | app.document_structure.table_context_linker:link_table_context:43 - Linked context for 0 tables
+2026-08-11 23:41:35 | INFO     | app.document_structure.image_context_linker:link_image_context:28 - Linking image context
+2026-08-11 23:41:35 | INFO     | app.document_structure.image_context_linker:link_image_context:43 - Linked context for 0 images
+2026-08-11 23:41:35 | INFO     | app.document_structure.metadata_builder:build_document_metadata:29 - Building document metadata
+2026-08-11 23:41:35 | INFO     | app.document_structure.metadata_builder:build_document_metadata:65 - Built metadata for document: tmpro74kab1.docx
+2026-08-11 23:41:35 | INFO     | app.workflows.ingestion_pipeline:ingest_document:155 - Ingestion pipeline completed for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:35 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:41:36 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:41:36 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:41:36 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:41:36 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:41:36 | INFO     | app.workflows.indexing_pipeline:index_document:64 - Starting indexing pipeline for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:36 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:29 - Building document tree
+2026-08-11 23:41:36 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:59 - Document tree built successfully
+2026-08-11 23:41:36 | INFO     | app.chunking.parent_child_chunker:chunk:31 - Creating parent-child chunks for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:36 | INFO     | app.chunking.parent_child_chunker:chunk:78 - Created 58 chunks (1 parent, 57 child)
+2026-08-11 23:41:36 | INFO     | app.chunking.multimodal_chunker:chunk:31 - Creating multimodal chunks for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:36 | INFO     | app.chunking.multimodal_chunker:chunk:57 - Created 1 multimodal chunks
+2026-08-11 23:41:36 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:36 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 57 chunks
+2026-08-11 23:41:36 | INFO     | app.vectorstore.indexing:index_chunks:48 - Indexing 58 chunks
+2026-08-11 23:41:36 | INFO     | app.vectorstore.indexing:_index_text_chunks:105 - Indexing 57 text chunks in batches of 32
+2026-08-11 23:41:37 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:39 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:41 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:43 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:45 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:47 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:49 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:51 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:53 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:55 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:56 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:41:56 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:41:56 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 32/57 chunks
+2026-08-11 23:41:57 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:41:59 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:42:01 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:42:04 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:42:06 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:42:08 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:42:10 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:42:11 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 25 points into text_chunks
+2026-08-11 23:42:11 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 25 points
+2026-08-11 23:42:11 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 57/57 chunks
+2026-08-11 23:42:11 | INFO     | app.workflows.indexing_pipeline:index_document:130 - Indexing pipeline completed for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:42:11 | INFO     | app.workflows.document_pipeline:process_document:259 - Document pipeline completed for b1915024-077b-4130-a256-c536b059fa8b: {'document_id': 'b1915024-077b-4130-a256-c536b059fa8b', 'tenant_id': 'dd1e5cfe-dcca-483c-a882-219acc575d84', 'filename': 'Enterprise_AI_Chatbot_Platform_SDD.docx', 'status': 'completed', 'chunks_created': 57, 'tables_extracted': 0, 'images_extracted': 0, 'error_message': None}
+2026-08-11 23:42:12 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:42 - === WIDGET CHAT REQUEST ===
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:43 - Embed token: 36107f8427334c979778b4a837e8c356
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:44 - Query: hii
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:48 - Conversation history messages: 0
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:75 - Chatbot found: 18f63395-2cc2-41a9-a530-9b649d67c92d, name: new
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:80 - Chatbot tenant_id: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:107 - Attached document_id: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:120 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:135 - Embedding dimension: 1024
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:160 - Retrieval method: hybrid
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:164 - TOP_K: 8
+2026-08-11 23:47:46 | INFO     | app.api.widget_chat:widget_chat:186 - Calling ChatPipeline.chat()...
+2026-08-11 23:47:46 | INFO     | app.workflows.chat_pipeline:chat:52 - Chat pipeline for query: hii
+2026-08-11 23:47:46 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'hii', 'is_summary': False, 'is_fact': False, 'query_type': 'general', 'retrieval_config': {'candidate_count': 20, 'final_count': 8, 'use_parent_context': True, 'context_window': 'balanced', 'priority_sections': False}}
+2026-08-11 23:47:46 | INFO     | app.workflows.retrieval_pipeline:retrieve:75 - === RETRIEVAL PIPELINE START ===
+2026-08-11 23:47:46 | INFO     | app.workflows.retrieval_pipeline:retrieve:76 - Query: hii
+2026-08-11 23:47:46 | INFO     | app.workflows.retrieval_pipeline:retrieve:77 - Method: hybrid
+2026-08-11 23:47:46 | INFO     | app.workflows.retrieval_pipeline:retrieve:78 - Query type: general
+2026-08-11 23:47:46 | INFO     | app.workflows.retrieval_pipeline:retrieve:79 - Document ID: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:47:46 | INFO     | app.workflows.retrieval_pipeline:retrieve:80 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:47:46 | INFO     | app.workflows.retrieval_pipeline:retrieve:81 - Allowed document IDs: None
+2026-08-11 23:47:46 | INFO     | app.workflows.retrieval_pipeline:retrieve:100 - Retrieval config: candidate_count=20, final_count=8, use_parent_context=True
+2026-08-11 23:47:46 | INFO     | app.retrieval.hybrid_search:search:36 - === HYBRID SEARCH START ===
+2026-08-11 23:47:46 | INFO     | app.retrieval.hybrid_search:search:37 - Query: hii
+2026-08-11 23:47:46 | INFO     | app.retrieval.hybrid_search:search:38 - Document ID: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:47:46 | INFO     | app.retrieval.hybrid_search:search:39 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:47:46 | INFO     | app.retrieval.hybrid_search:search:40 - Alpha: 0.6
+2026-08-11 23:47:46 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:47:46 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: text_chunks
+2026-08-11 23:47:46 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 23:47:46 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:47:46 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 23:47:46 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 23:47:47 | INFO     | app.retrieval.bm25_search:search:118 - Performing BM25 search for query: hii
+2026-08-11 23:47:47 | INFO     | app.retrieval.bm25_search:search:156 - Found 0 BM25 results
+2026-08-11 23:47:47 | INFO     | app.retrieval.hybrid_search:search:81 - Found 8 hybrid results
+2026-08-11 23:47:47 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:47:47 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:47:47 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:47:47 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 23:47:47 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 23:47:47 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:47:47 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 23:47:47 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 23:47:47 | INFO     | app.reranking.rerank_pipeline:rerank_results:32 - Reranking pipeline processing 8 results
+2026-08-11 23:47:47 | INFO     | app.reranking.bge_reranker:rerank:66 - Reranking 8 results
+2026-08-11 23:47:51 | INFO     | app.reranking.bge_reranker:rerank:93 - Reranked to 8 results
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:enhance_results_with_siblings:218 - Enhancing 8 results with sibling context
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 51bd67db-5508-40a8-b1f2-34554cd47afd
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: b2f3916d-7147-4d25-b4d1-9f570586b716
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: d6681683-0f6e-4530-919d-ddbda5b753a0
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 9bdf147a-3ed3-4189-9e3e-3cc59ad26256
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 37f5e36b-d798-4a3a-828b-3d37a6c5bfb0
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 4b9bff08-300d-48ad-9293-f8ea62654583
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 4eea797a-2afa-4c10-9156-a96cb4c5f5ce
+2026-08-11 23:47:51 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: c264b9d5-5bab-45d4-aba9-ec4944c7c930
+2026-08-11 23:47:51 | INFO     | app.context_builder.token_optimizer:optimize_context:29 - Optimizing context to fit 6000 tokens
+2026-08-11 23:47:51 | INFO     | app.context_builder.token_optimizer:_optimize_simple:72 - Optimized from 8 to 8 results (648 tokens)
+2026-08-11 23:47:51 | INFO     | app.context_builder.context_assembler:assemble_context_with_citations:72 - Assembling context with citations from 8 results
+2026-08-11 23:47:51 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'hii', 'is_summary': False, 'is_fact': False, 'query_type': 'general', 'retrieval_config': {'candidate_count': 20, 'final_count': 8, 'use_parent_context': True, 'context_window': 'balanced', 'priority_sections': False}}
+2026-08-11 23:47:51 | INFO     | app.llm.response_generator:generate_rag_response:43 - Generating RAG response for query: hii, is_summary: False
+2026-08-11 23:47:57 | INFO     | app.llm.response_generator:generate_rag_response:60 - Generated response in 5.78s
+2026-08-11 23:47:57 | INFO     | app.llm.citation_builder:add_citations_to_answer:39 - Adding 1 citations to answer
+2026-08-11 23:47:57 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 23:47:58 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 23:47:58 | INFO     | app.api.widget_chat:widget_chat:205 - ChatPipeline result keys: dict_keys(['answer', 'sources', 'citations', 'confidence_score', 'processing_time_ms', 'model_used', 'retrieval_method', 'has_hallucination', 'hallucination_details', 'context_used'])
+2026-08-11 23:47:58 | INFO     | app.api.widget_chat:widget_chat:215 - Answer length: 1458
+2026-08-11 23:47:58 | INFO     | app.api.widget_chat:widget_chat:219 - Answer preview: The context provided does not contain any questions to answer. It appears to be a set of technical details about APIs, testing, and the current status and next steps for a chatbot management and embed...
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:42 - === WIDGET CHAT REQUEST ===
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:43 - Embed token: 36107f8427334c979778b4a837e8c356
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:44 - Query: hii
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:48 - Conversation history messages: 0
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:75 - Chatbot found: 18f63395-2cc2-41a9-a530-9b649d67c92d, name: new
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:80 - Chatbot tenant_id: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:107 - Attached document_id: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:120 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:135 - Embedding dimension: 1024
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:160 - Retrieval method: hybrid
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:164 - TOP_K: 8
+2026-08-11 23:48:30 | INFO     | app.api.widget_chat:widget_chat:186 - Calling ChatPipeline.chat()...
+2026-08-11 23:48:30 | INFO     | app.workflows.chat_pipeline:chat:52 - Chat pipeline for query: hii
+2026-08-11 23:48:30 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'hii', 'is_summary': False, 'is_fact': False, 'query_type': 'general', 'retrieval_config': {'candidate_count': 20, 'final_count': 8, 'use_parent_context': True, 'context_window': 'balanced', 'priority_sections': False}}
+2026-08-11 23:48:30 | INFO     | app.workflows.retrieval_pipeline:retrieve:75 - === RETRIEVAL PIPELINE START ===
+2026-08-11 23:48:30 | INFO     | app.workflows.retrieval_pipeline:retrieve:76 - Query: hii
+2026-08-11 23:48:30 | INFO     | app.workflows.retrieval_pipeline:retrieve:77 - Method: hybrid
+2026-08-11 23:48:30 | INFO     | app.workflows.retrieval_pipeline:retrieve:78 - Query type: general
+2026-08-11 23:48:30 | INFO     | app.workflows.retrieval_pipeline:retrieve:79 - Document ID: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:48:30 | INFO     | app.workflows.retrieval_pipeline:retrieve:80 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:48:30 | INFO     | app.workflows.retrieval_pipeline:retrieve:81 - Allowed document IDs: None
+2026-08-11 23:48:30 | INFO     | app.workflows.retrieval_pipeline:retrieve:100 - Retrieval config: candidate_count=20, final_count=8, use_parent_context=True
+2026-08-11 23:48:30 | INFO     | app.retrieval.hybrid_search:search:36 - === HYBRID SEARCH START ===
+2026-08-11 23:48:30 | INFO     | app.retrieval.hybrid_search:search:37 - Query: hii
+2026-08-11 23:48:30 | INFO     | app.retrieval.hybrid_search:search:38 - Document ID: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:48:30 | INFO     | app.retrieval.hybrid_search:search:39 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-11 23:48:30 | INFO     | app.retrieval.hybrid_search:search:40 - Alpha: 0.6
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: text_chunks
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 23:48:30 | INFO     | app.retrieval.bm25_search:search:118 - Performing BM25 search for query: hii
+2026-08-11 23:48:30 | INFO     | app.retrieval.bm25_search:search:156 - Found 0 BM25 results
+2026-08-11 23:48:30 | INFO     | app.retrieval.hybrid_search:search:81 - Found 8 hybrid results
+2026-08-11 23:48:30 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:48:30 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-11 23:48:30 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-11 23:48:31 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-11 23:48:31 | INFO     | app.reranking.rerank_pipeline:rerank_results:32 - Reranking pipeline processing 8 results
+2026-08-11 23:48:31 | INFO     | app.reranking.bge_reranker:rerank:66 - Reranking 8 results
+2026-08-11 23:48:32 | INFO     | app.reranking.bge_reranker:rerank:93 - Reranked to 8 results
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:enhance_results_with_siblings:218 - Enhancing 8 results with sibling context
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 51bd67db-5508-40a8-b1f2-34554cd47afd
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: b2f3916d-7147-4d25-b4d1-9f570586b716
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: d6681683-0f6e-4530-919d-ddbda5b753a0
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 9bdf147a-3ed3-4189-9e3e-3cc59ad26256
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 37f5e36b-d798-4a3a-828b-3d37a6c5bfb0
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 4b9bff08-300d-48ad-9293-f8ea62654583
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 4eea797a-2afa-4c10-9156-a96cb4c5f5ce
+2026-08-11 23:48:32 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: c264b9d5-5bab-45d4-aba9-ec4944c7c930
+2026-08-11 23:48:32 | INFO     | app.context_builder.token_optimizer:optimize_context:29 - Optimizing context to fit 6000 tokens
+2026-08-11 23:48:32 | INFO     | app.context_builder.token_optimizer:_optimize_simple:72 - Optimized from 8 to 8 results (648 tokens)
+2026-08-11 23:48:32 | INFO     | app.context_builder.context_assembler:assemble_context_with_citations:72 - Assembling context with citations from 8 results
+2026-08-11 23:48:32 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'hii', 'is_summary': False, 'is_fact': False, 'query_type': 'general', 'retrieval_config': {'candidate_count': 20, 'final_count': 8, 'use_parent_context': True, 'context_window': 'balanced', 'priority_sections': False}}
+2026-08-11 23:48:32 | INFO     | app.llm.response_generator:generate_rag_response:43 - Generating RAG response for query: hii, is_summary: False
+2026-08-11 23:48:34 | INFO     | app.llm.response_generator:generate_rag_response:60 - Generated response in 2.50s
+2026-08-11 23:48:34 | INFO     | app.llm.citation_builder:add_citations_to_answer:39 - Adding 1 citations to answer
+2026-08-11 23:48:34 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 23:48:37 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-11 23:48:37 | INFO     | app.api.widget_chat:widget_chat:205 - ChatPipeline result keys: dict_keys(['answer', 'sources', 'citations', 'confidence_score', 'processing_time_ms', 'model_used', 'retrieval_method', 'has_hallucination', 'hallucination_details', 'context_used'])
+2026-08-11 23:48:37 | INFO     | app.api.widget_chat:widget_chat:215 - Answer length: 738
+2026-08-11 23:48:37 | INFO     | app.api.widget_chat:widget_chat:219 - Answer preview: I apologize, but I do not have enough context to provide a comprehensive answer to your question "hii". The provided context appears to be about APIs, chatbot management, and backend development, but ...
+2026-08-11 23:56:05 | INFO     | app.api.upload:upload_document:71 - Received file upload: Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:56:05 | INFO     | app.storage.minio_client:upload_bytes:81 - Uploaded to MinIO: dd1e5cfe-dcca-483c-a882-219acc575d84/28b641ad-bdc0-424a-bccb-6e624ab7b8ee/Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx
+2026-08-11 23:56:06 | INFO     | app.services.audit_service:log_audit:53 - audit action=upload tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:06 | INFO     | app.api.upload:_enqueue_processing:48 - Enqueued Celery task for document 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:06 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:06 | INFO     | app.tasks.document_tasks:process_document_task:36 - Celery task processing document 28b641ad-bdc0-424a-bccb-6e624ab7b8ee (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:56:06 | INFO     | app.workflows.document_pipeline:process_document:175 - Starting document pipeline for 28b641ad-bdc0-424a-bccb-6e624ab7b8ee (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:56:06 | INFO     | app.workflows.ingestion_pipeline:__init__:66 - Ingestion pipeline initialized with Docling: False, Unstructured: False, OCR: auto (lazy)
+2026-08-11 23:56:06 | INFO     | app.workflows.ingestion_pipeline:ingest_document:86 - Starting ingestion pipeline for: C:\Users\Sravani\AppData\Local\Temp\tmpfr5v4o0f.docx
+2026-08-11 23:56:06 | INFO     | app.ingestion.loaders.docx_loader:load:32 - Loading DOCX file: C:\Users\Sravani\AppData\Local\Temp\tmpfr5v4o0f.docx
+2026-08-11 23:56:06 | INFO     | app.ingestion.parsers.layout_parser:parse:27 - Parsing document layout
+2026-08-11 23:56:06 | INFO     | app.workflows.ingestion_pipeline:_parse_document:213 - Using layout parser as fallback
+2026-08-11 23:56:06 | INFO     | app.ingestion.content_extractor:extract:61 - Extracted 0 tables and 0 images (0 charts)
+2026-08-11 23:56:06 | INFO     | app.document_structure.heading_detector:detect_headings:49 - Detecting headings in document
+2026-08-11 23:56:06 | INFO     | app.document_structure.heading_detector:detect_headings:65 - Detected 0 headings
+2026-08-11 23:56:06 | INFO     | app.document_structure.section_detector:detect_sections:28 - Detecting document sections
+2026-08-11 23:56:06 | INFO     | app.document_structure.caption_linker:detect_captions:37 - Detecting captions in document
+2026-08-11 23:56:06 | INFO     | app.document_structure.caption_linker:detect_captions:53 - Detected 0 captions
+2026-08-11 23:56:06 | INFO     | app.document_structure.caption_linker:link_all_captions:138 - Linking captions to elements
+2026-08-11 23:56:06 | INFO     | app.document_structure.caption_linker:link_all_captions:154 - Linked 0 captions to elements
+2026-08-11 23:56:06 | INFO     | app.document_structure.table_context_linker:link_table_context:28 - Linking table context
+2026-08-11 23:56:06 | INFO     | app.document_structure.table_context_linker:link_table_context:43 - Linked context for 0 tables
+2026-08-11 23:56:06 | INFO     | app.document_structure.image_context_linker:link_image_context:28 - Linking image context
+2026-08-11 23:56:06 | INFO     | app.document_structure.image_context_linker:link_image_context:43 - Linked context for 0 images
+2026-08-11 23:56:06 | INFO     | app.document_structure.metadata_builder:build_document_metadata:29 - Building document metadata
+2026-08-11 23:56:06 | INFO     | app.document_structure.metadata_builder:build_document_metadata:65 - Built metadata for document: tmpfr5v4o0f.docx
+2026-08-11 23:56:06 | INFO     | app.workflows.ingestion_pipeline:ingest_document:155 - Ingestion pipeline completed for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:06 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:56:06 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:56:06 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:56:06 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:56:06 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:56:06 | INFO     | app.workflows.indexing_pipeline:index_document:64 - Starting indexing pipeline for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:06 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:29 - Building document tree
+2026-08-11 23:56:06 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:59 - Document tree built successfully
+2026-08-11 23:56:06 | INFO     | app.chunking.parent_child_chunker:chunk:31 - Creating parent-child chunks for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:06 | INFO     | app.chunking.parent_child_chunker:chunk:78 - Created 143 chunks (1 parent, 142 child)
+2026-08-11 23:56:06 | INFO     | app.chunking.multimodal_chunker:chunk:31 - Creating multimodal chunks for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:06 | INFO     | app.chunking.multimodal_chunker:chunk:57 - Created 1 multimodal chunks
+2026-08-11 23:56:06 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:06 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 142 chunks
+2026-08-11 23:56:06 | INFO     | app.vectorstore.indexing:index_chunks:48 - Indexing 143 chunks
+2026-08-11 23:56:06 | INFO     | app.vectorstore.indexing:_index_text_chunks:105 - Indexing 142 text chunks in batches of 32
+2026-08-11 23:56:08 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:10 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:12 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:14 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:16 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:18 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:20 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:22 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:24 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:26 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:28 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:30 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:32 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:56:32 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:56:32 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 32/142 chunks
+2026-08-11 23:56:32 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:34 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:36 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:38 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:40 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:42 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:44 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:47 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:49 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:51 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:53 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:55 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:56:58 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:56:58 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:56:58 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 64/142 chunks
+2026-08-11 23:57:25 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:57:25 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:57:25 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 96/142 chunks
+2026-08-11 23:57:39 | INFO     | app.api.documents:delete_document:62 - Deleting document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:57:39 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:57:39 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:57:39 | INFO     | app.workflows.indexing_pipeline:delete_document:174 - Deleting document from index: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:57:39 | INFO     | app.retrieval.bm25_search:delete_index:887 - Deleted BM25 index for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:57:39 | INFO     | app.vectorstore.indexing:delete_document_chunks:267 - Deleting chunks for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:57:40 | INFO     | app.vectorstore.qdrant_client:delete_points:186 - Deleting 96 points from text_chunks
+2026-08-11 23:57:40 | INFO     | app.vectorstore.qdrant_client:delete_points:193 - Successfully deleted points
+2026-08-11 23:57:40 | INFO     | app.services.audit_service:log_audit:53 - audit action=delete tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:57:52 | INFO     | app.api.upload:upload_document:71 - Received file upload: Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:57:52 | INFO     | app.storage.minio_client:upload_bytes:81 - Uploaded to MinIO: dd1e5cfe-dcca-483c-a882-219acc575d84/dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce/Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx
+2026-08-11 23:57:52 | INFO     | app.services.audit_service:log_audit:53 - audit action=upload tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:57:52 | INFO     | app.api.upload:_enqueue_processing:48 - Enqueued Celery task for document dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:57:52 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:57:54 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:57:55 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:57:55 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:57:55 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 128/142 chunks
+2026-08-11 23:57:57 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:57:59 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:01 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:03 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:06 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:07 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 14 points into text_chunks
+2026-08-11 23:58:07 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 14 points
+2026-08-11 23:58:07 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 142/142 chunks
+2026-08-11 23:58:07 | INFO     | app.workflows.indexing_pipeline:index_document:130 - Indexing pipeline completed for document: 28b641ad-bdc0-424a-bccb-6e624ab7b8ee
+2026-08-11 23:58:07 | INFO     | app.workflows.document_pipeline:process_document:259 - Document pipeline completed for 28b641ad-bdc0-424a-bccb-6e624ab7b8ee: {'document_id': '28b641ad-bdc0-424a-bccb-6e624ab7b8ee', 'tenant_id': 'dd1e5cfe-dcca-483c-a882-219acc575d84', 'filename': 'Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx', 'status': 'completed', 'chunks_created': 142, 'tables_extracted': 0, 'images_extracted': 0, 'error_message': None}
+2026-08-11 23:58:07 | INFO     | app.tasks.document_tasks:process_document_task:36 - Celery task processing document dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:58:07 | INFO     | app.workflows.document_pipeline:process_document:175 - Starting document pipeline for dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-11 23:58:07 | INFO     | app.workflows.ingestion_pipeline:__init__:66 - Ingestion pipeline initialized with Docling: False, Unstructured: False, OCR: auto (lazy)
+2026-08-11 23:58:07 | INFO     | app.workflows.ingestion_pipeline:ingest_document:86 - Starting ingestion pipeline for: C:\Users\Sravani\AppData\Local\Temp\tmp1jcevcjb.docx
+2026-08-11 23:58:07 | INFO     | app.ingestion.loaders.docx_loader:load:32 - Loading DOCX file: C:\Users\Sravani\AppData\Local\Temp\tmp1jcevcjb.docx
+2026-08-11 23:58:07 | INFO     | app.ingestion.parsers.layout_parser:parse:27 - Parsing document layout
+2026-08-11 23:58:07 | INFO     | app.workflows.ingestion_pipeline:_parse_document:213 - Using layout parser as fallback
+2026-08-11 23:58:07 | INFO     | app.ingestion.content_extractor:extract:61 - Extracted 0 tables and 0 images (0 charts)
+2026-08-11 23:58:07 | INFO     | app.document_structure.heading_detector:detect_headings:49 - Detecting headings in document
+2026-08-11 23:58:07 | INFO     | app.document_structure.heading_detector:detect_headings:65 - Detected 0 headings
+2026-08-11 23:58:07 | INFO     | app.document_structure.section_detector:detect_sections:28 - Detecting document sections
+2026-08-11 23:58:07 | INFO     | app.document_structure.caption_linker:detect_captions:37 - Detecting captions in document
+2026-08-11 23:58:07 | INFO     | app.document_structure.caption_linker:detect_captions:53 - Detected 0 captions
+2026-08-11 23:58:07 | INFO     | app.document_structure.caption_linker:link_all_captions:138 - Linking captions to elements
+2026-08-11 23:58:07 | INFO     | app.document_structure.caption_linker:link_all_captions:154 - Linked 0 captions to elements
+2026-08-11 23:58:07 | INFO     | app.document_structure.table_context_linker:link_table_context:28 - Linking table context
+2026-08-11 23:58:07 | INFO     | app.document_structure.table_context_linker:link_table_context:43 - Linked context for 0 tables
+2026-08-11 23:58:07 | INFO     | app.document_structure.image_context_linker:link_image_context:28 - Linking image context
+2026-08-11 23:58:07 | INFO     | app.document_structure.image_context_linker:link_image_context:43 - Linked context for 0 images
+2026-08-11 23:58:07 | INFO     | app.document_structure.metadata_builder:build_document_metadata:29 - Building document metadata
+2026-08-11 23:58:07 | INFO     | app.document_structure.metadata_builder:build_document_metadata:65 - Built metadata for document: tmp1jcevcjb.docx
+2026-08-11 23:58:07 | INFO     | app.workflows.ingestion_pipeline:ingest_document:155 - Ingestion pipeline completed for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:07 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-11 23:58:07 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-11 23:58:07 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:58:07 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:58:07 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-11 23:58:07 | INFO     | app.workflows.indexing_pipeline:index_document:64 - Starting indexing pipeline for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:07 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:29 - Building document tree
+2026-08-11 23:58:07 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:59 - Document tree built successfully
+2026-08-11 23:58:07 | INFO     | app.chunking.parent_child_chunker:chunk:31 - Creating parent-child chunks for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:07 | INFO     | app.chunking.parent_child_chunker:chunk:78 - Created 143 chunks (1 parent, 142 child)
+2026-08-11 23:58:07 | INFO     | app.chunking.multimodal_chunker:chunk:31 - Creating multimodal chunks for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:07 | INFO     | app.chunking.multimodal_chunker:chunk:57 - Created 1 multimodal chunks
+2026-08-11 23:58:07 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:07 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 142 chunks
+2026-08-11 23:58:07 | INFO     | app.vectorstore.indexing:index_chunks:48 - Indexing 143 chunks
+2026-08-11 23:58:07 | INFO     | app.vectorstore.indexing:_index_text_chunks:105 - Indexing 142 text chunks in batches of 32
+2026-08-11 23:58:09 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:12 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:14 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:16 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:18 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:21 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:23 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:25 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:27 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:29 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:31 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:33 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:35 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:37 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:58:37 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:58:37 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 32/142 chunks
+2026-08-11 23:58:41 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:44 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:46 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:48 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:58:50 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-11 23:59:07 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:59:07 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:59:07 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 64/142 chunks
+2026-08-11 23:59:39 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-11 23:59:39 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-11 23:59:39 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 96/142 chunks
+2026-08-12 00:00:10 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-12 00:00:10 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-12 00:00:10 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 128/142 chunks
+2026-08-12 00:00:24 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 14 points into text_chunks
+2026-08-12 00:00:24 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 14 points
+2026-08-12 00:00:24 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 142/142 chunks
+2026-08-12 00:00:24 | INFO     | app.workflows.indexing_pipeline:index_document:130 - Indexing pipeline completed for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-12 00:00:24 | INFO     | app.workflows.document_pipeline:process_document:259 - Document pipeline completed for dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce: {'document_id': 'dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce', 'tenant_id': 'dd1e5cfe-dcca-483c-a882-219acc575d84', 'filename': 'Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx', 'status': 'completed', 'chunks_created': 142, 'tables_extracted': 0, 'images_extracted': 0, 'error_message': None}
+2026-08-12 00:00:49 | INFO     | app.api.documents:delete_document:62 - Deleting document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-12 00:00:49 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-12 00:00:50 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-12 00:00:50 | INFO     | app.workflows.indexing_pipeline:delete_document:174 - Deleting document from index: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-12 00:00:50 | INFO     | app.retrieval.bm25_search:delete_index:887 - Deleted BM25 index for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-12 00:00:50 | INFO     | app.vectorstore.indexing:delete_document_chunks:267 - Deleting chunks for document: dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-12 00:00:50 | INFO     | app.vectorstore.qdrant_client:delete_points:186 - Deleting 142 points from text_chunks
+2026-08-12 00:00:50 | INFO     | app.vectorstore.qdrant_client:delete_points:193 - Successfully deleted points
+2026-08-12 00:00:50 | INFO     | app.services.audit_service:log_audit:53 - audit action=delete tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/dfb0ab2c-1bd3-4069-bff9-45a1e321f4ce
+2026-08-12 00:00:54 | INFO     | app.api.documents:delete_document:62 - Deleting document: b1915024-077b-4130-a256-c536b059fa8b (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-12 00:00:54 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-12 00:00:55 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-12 00:00:55 | INFO     | app.workflows.indexing_pipeline:delete_document:174 - Deleting document from index: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-12 00:00:55 | INFO     | app.retrieval.bm25_search:delete_index:887 - Deleted BM25 index for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-12 00:00:55 | INFO     | app.vectorstore.indexing:delete_document_chunks:267 - Deleting chunks for document: b1915024-077b-4130-a256-c536b059fa8b
+2026-08-12 00:00:55 | INFO     | app.vectorstore.qdrant_client:delete_points:186 - Deleting 57 points from text_chunks
+2026-08-12 00:00:55 | INFO     | app.vectorstore.qdrant_client:delete_points:193 - Successfully deleted points
+2026-08-12 00:00:55 | INFO     | app.services.audit_service:log_audit:53 - audit action=delete tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/b1915024-077b-4130-a256-c536b059fa8b
+2026-08-12 00:05:33 | INFO     | app.api.upload:upload_document:71 - Received file upload: Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-12 00:05:33 | INFO     | app.storage.minio_client:upload_bytes:81 - Uploaded to MinIO: dd1e5cfe-dcca-483c-a882-219acc575d84/53ebd85d-9a02-4452-86db-69bd805ce85d/Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx
+2026-08-12 00:05:33 | INFO     | app.services.audit_service:log_audit:53 - audit action=upload tenant=dd1e5cfe-dcca-483c-a882-219acc575d84 user=023fb951-005b-4728-a75b-34b64fa06f51 resource=document/53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:33 | INFO     | app.api.upload:_enqueue_processing:48 - Enqueued Celery task for document 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:33 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:33 | INFO     | app.tasks.document_tasks:process_document_task:36 - Celery task processing document 53ebd85d-9a02-4452-86db-69bd805ce85d (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-12 00:05:33 | INFO     | app.workflows.document_pipeline:process_document:175 - Starting document pipeline for 53ebd85d-9a02-4452-86db-69bd805ce85d (tenant=dd1e5cfe-dcca-483c-a882-219acc575d84)
+2026-08-12 00:05:33 | INFO     | app.workflows.ingestion_pipeline:__init__:66 - Ingestion pipeline initialized with Docling: False, Unstructured: False, OCR: auto (lazy)
+2026-08-12 00:05:33 | INFO     | app.workflows.ingestion_pipeline:ingest_document:86 - Starting ingestion pipeline for: C:\Users\Sravani\AppData\Local\Temp\tmp72c_ktuo.docx
+2026-08-12 00:05:33 | INFO     | app.ingestion.loaders.docx_loader:load:32 - Loading DOCX file: C:\Users\Sravani\AppData\Local\Temp\tmp72c_ktuo.docx
+2026-08-12 00:05:33 | INFO     | app.ingestion.parsers.layout_parser:parse:27 - Parsing document layout
+2026-08-12 00:05:33 | INFO     | app.workflows.ingestion_pipeline:_parse_document:213 - Using layout parser as fallback
+2026-08-12 00:05:33 | INFO     | app.ingestion.content_extractor:extract:61 - Extracted 0 tables and 0 images (0 charts)
+2026-08-12 00:05:33 | INFO     | app.document_structure.heading_detector:detect_headings:49 - Detecting headings in document
+2026-08-12 00:05:33 | INFO     | app.document_structure.heading_detector:detect_headings:65 - Detected 0 headings
+2026-08-12 00:05:33 | INFO     | app.document_structure.section_detector:detect_sections:28 - Detecting document sections
+2026-08-12 00:05:33 | INFO     | app.document_structure.caption_linker:detect_captions:37 - Detecting captions in document
+2026-08-12 00:05:33 | INFO     | app.document_structure.caption_linker:detect_captions:53 - Detected 0 captions
+2026-08-12 00:05:33 | INFO     | app.document_structure.caption_linker:link_all_captions:138 - Linking captions to elements
+2026-08-12 00:05:33 | INFO     | app.document_structure.caption_linker:link_all_captions:154 - Linked 0 captions to elements
+2026-08-12 00:05:33 | INFO     | app.document_structure.table_context_linker:link_table_context:28 - Linking table context
+2026-08-12 00:05:33 | INFO     | app.document_structure.table_context_linker:link_table_context:43 - Linked context for 0 tables
+2026-08-12 00:05:33 | INFO     | app.document_structure.image_context_linker:link_image_context:28 - Linking image context
+2026-08-12 00:05:33 | INFO     | app.document_structure.image_context_linker:link_image_context:43 - Linked context for 0 images
+2026-08-12 00:05:33 | INFO     | app.document_structure.metadata_builder:build_document_metadata:29 - Building document metadata
+2026-08-12 00:05:33 | INFO     | app.document_structure.metadata_builder:build_document_metadata:65 - Built metadata for document: tmp72c_ktuo.docx
+2026-08-12 00:05:33 | INFO     | app.workflows.ingestion_pipeline:ingest_document:155 - Ingestion pipeline completed for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:33 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-12 00:05:33 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-12 00:05:33 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-12 00:05:33 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-12 00:05:33 | WARNING  | app.llm.llm_client:__init__:24 - OPENROUTER_API_KEY not set. LLM calls will fail.
+2026-08-12 00:05:33 | INFO     | app.workflows.indexing_pipeline:index_document:64 - Starting indexing pipeline for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:33 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:29 - Building document tree
+2026-08-12 00:05:33 | INFO     | app.ingestion.processors.document_tree_builder:build_tree:59 - Document tree built successfully
+2026-08-12 00:05:33 | INFO     | app.chunking.parent_child_chunker:chunk:31 - Creating parent-child chunks for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:33 | INFO     | app.chunking.parent_child_chunker:chunk:78 - Created 143 chunks (1 parent, 142 child)
+2026-08-12 00:05:33 | INFO     | app.chunking.multimodal_chunker:chunk:31 - Creating multimodal chunks for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:33 | INFO     | app.chunking.multimodal_chunker:chunk:57 - Created 1 multimodal chunks
+2026-08-12 00:05:33 | INFO     | app.retrieval.bm25_search:build_index:71 - Building BM25 index for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:33 | INFO     | app.retrieval.bm25_search:build_index:92 - BM25 index built for 142 chunks
+2026-08-12 00:05:33 | INFO     | app.vectorstore.indexing:index_chunks:48 - Indexing 143 chunks
+2026-08-12 00:05:33 | INFO     | app.vectorstore.indexing:_index_text_chunks:105 - Indexing 142 text chunks in batches of 32
+2026-08-12 00:05:35 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:37 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:39 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:41 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:43 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:45 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:47 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:49 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:51 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:53 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:55 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:57 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:59 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:05:59 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-12 00:05:59 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-12 00:05:59 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 32/142 chunks
+2026-08-12 00:06:01 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:03 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:05 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:07 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:09 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:11 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:13 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:15 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:17 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:19 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:21 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:23 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:24 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-12 00:06:24 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-12 00:06:24 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 64/142 chunks
+2026-08-12 00:06:25 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:27 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:29 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:31 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:33 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:35 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:37 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:39 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:41 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:43 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:45 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:47 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:49 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-12 00:06:49 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-12 00:06:49 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 96/142 chunks
+2026-08-12 00:06:49 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:51 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:53 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:55 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:57 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:06:59 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:01 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:03 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:05 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:07 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:09 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:11 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:13 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 32 points into text_chunks
+2026-08-12 00:07:13 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 32 points
+2026-08-12 00:07:13 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 128/142 chunks
+2026-08-12 00:07:13 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:15 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:17 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:19 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:21 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:23 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:24 | INFO     | app.vectorstore.qdrant_client:insert_points:109 - Inserting 14 points into text_chunks
+2026-08-12 00:07:24 | INFO     | app.vectorstore.qdrant_client:insert_points:116 - Successfully inserted 14 points
+2026-08-12 00:07:24 | INFO     | app.vectorstore.indexing:report_progress:66 - Indexed 142/142 chunks
+2026-08-12 00:07:24 | INFO     | app.workflows.indexing_pipeline:index_document:130 - Indexing pipeline completed for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:07:24 | INFO     | app.workflows.document_pipeline:process_document:259 - Document pipeline completed for 53ebd85d-9a02-4452-86db-69bd805ce85d: {'document_id': '53ebd85d-9a02-4452-86db-69bd805ce85d', 'tenant_id': 'dd1e5cfe-dcca-483c-a882-219acc575d84', 'filename': 'Enterprise_AI_Chatbot_Platform_Roadmap_Phases.docx', 'status': 'completed', 'chunks_created': 142, 'tables_extracted': 0, 'images_extracted': 0, 'error_message': None}
+2026-08-12 00:07:25 | INFO     | app.api.upload:get_upload_status:148 - Checking status for document: 53ebd85d-9a02-4452-86db-69bd805ce85d
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:42 - === WIDGET CHAT REQUEST ===
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:43 - Embed token: 36107f8427334c979778b4a837e8c356
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:44 - Query: sumamrize my document i have uploaded
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:48 - Conversation history messages: 0
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:75 - Chatbot found: 18f63395-2cc2-41a9-a530-9b649d67c92d, name: new
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:80 - Chatbot tenant_id: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:107 - Attached document_id: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:120 - Text embedding model: BAAI/bge-m3
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:135 - Embedding dimension: 1024
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:160 - Retrieval method: hybrid
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:164 - TOP_K: 8
+2026-08-12 00:09:24 | INFO     | app.api.widget_chat:widget_chat:186 - Calling ChatPipeline.chat()...
+2026-08-12 00:09:24 | INFO     | app.workflows.chat_pipeline:chat:52 - Chat pipeline for query: sumamrize my document i have uploaded
+2026-08-12 00:09:24 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'sumamrize my document i have uploaded', 'is_summary': False, 'is_fact': False, 'query_type': 'general', 'retrieval_config': {'candidate_count': 20, 'final_count': 8, 'use_parent_context': True, 'context_window': 'balanced', 'priority_sections': False}}
+2026-08-12 00:09:24 | INFO     | app.workflows.retrieval_pipeline:retrieve:75 - === RETRIEVAL PIPELINE START ===
+2026-08-12 00:09:24 | INFO     | app.workflows.retrieval_pipeline:retrieve:76 - Query: sumamrize my document i have uploaded
+2026-08-12 00:09:24 | INFO     | app.workflows.retrieval_pipeline:retrieve:77 - Method: hybrid
+2026-08-12 00:09:24 | INFO     | app.workflows.retrieval_pipeline:retrieve:78 - Query type: general
+2026-08-12 00:09:24 | INFO     | app.workflows.retrieval_pipeline:retrieve:79 - Document ID: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-12 00:09:24 | INFO     | app.workflows.retrieval_pipeline:retrieve:80 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-12 00:09:24 | INFO     | app.workflows.retrieval_pipeline:retrieve:81 - Allowed document IDs: None
+2026-08-12 00:09:24 | INFO     | app.workflows.retrieval_pipeline:retrieve:100 - Retrieval config: candidate_count=20, final_count=8, use_parent_context=True
+2026-08-12 00:09:24 | INFO     | app.retrieval.hybrid_search:search:36 - === HYBRID SEARCH START ===
+2026-08-12 00:09:24 | INFO     | app.retrieval.hybrid_search:search:37 - Query: sumamrize my document i have uploaded
+2026-08-12 00:09:24 | INFO     | app.retrieval.hybrid_search:search:38 - Document ID: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-12 00:09:24 | INFO     | app.retrieval.hybrid_search:search:39 - Tenant ID: dd1e5cfe-dcca-483c-a882-219acc575d84
+2026-08-12 00:09:24 | INFO     | app.retrieval.hybrid_search:search:40 - Alpha: 0.6
+2026-08-12 00:09:24 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-12 00:09:24 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: text_chunks
+2026-08-12 00:09:24 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-12 00:09:24 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-12 00:09:24 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-12 00:09:24 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-12 00:09:24 | INFO     | app.retrieval.bm25_search:search:118 - Performing BM25 search for query: sumamrize my document i have uploaded
+2026-08-12 00:09:24 | INFO     | app.retrieval.bm25_search:search:156 - Found 0 BM25 results
+2026-08-12 00:09:24 | INFO     | app.retrieval.hybrid_search:search:81 - Found 8 hybrid results
+2026-08-12 00:09:24 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-12 00:09:25 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-12 00:09:25 | INFO     | app.retrieval.bm25_search:search_section_context:383 - Section search found 0 chunks for: sumamrize my document i have uploaded module
+2026-08-12 00:09:25 | INFO     | app.retrieval.bm25_search:search_by_phrase:220 - Phrase search found 0 chunks
+2026-08-12 00:09:25 | INFO     | app.vectorstore.qdrant_client:_connect:26 - Connecting to Qdrant at: http://localhost:6333
+2026-08-12 00:09:25 | INFO     | app.vectorstore.qdrant_client:_connect:31 - Connected to Qdrant. Existing collections: 4
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:search_with_filter:142 - Searching with filter for document: 11844ae7-122b-4664-a632-c975d867563d
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:209 - Getting query vector for collection: table_chunks
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:218 - Using text embedding for text/table/multimodal collection
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:220 - Text embedding model: BAAI/bge-m3
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:221 - Text embedding vector dimension: 1024
+2026-08-12 00:09:25 | INFO     | app.retrieval.dense_search:_get_query_vector:224 - Generated query vector dimension: 1024
+2026-08-12 00:09:25 | INFO     | app.retrieval.bm25_search:search_model_metric:684 - Model-metric search found 0 chunks for: ['sumamrize', 'document', 'have', 'uploaded']
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:enhance_results_with_siblings:218 - Enhancing 8 results with sibling context
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 51bd67db-5508-40a8-b1f2-34554cd47afd
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: b2f3916d-7147-4d25-b4d1-9f570586b716
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: d6681683-0f6e-4530-919d-ddbda5b753a0
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 9bdf147a-3ed3-4189-9e3e-3cc59ad26256
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 37f5e36b-d798-4a3a-828b-3d37a6c5bfb0
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 4b9bff08-300d-48ad-9293-f8ea62654583
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: 4eea797a-2afa-4c10-9156-a96cb4c5f5ce
+2026-08-12 00:09:26 | INFO     | app.retrieval.parent_retriever:retrieve_with_siblings:77 - Retrieving siblings for chunk: c264b9d5-5bab-45d4-aba9-ec4944c7c930
+2026-08-12 00:09:26 | INFO     | app.context_builder.context_assembler:assemble_context_with_citations:72 - Assembling context with citations from 8 results
+2026-08-12 00:09:26 | INFO     | app.retrieval.query_analyzer:analyze_query:83 - Query analysis: {'query': 'sumamrize my document i have uploaded', 'is_summary': False, 'is_fact': False, 'query_type': 'general', 'retrieval_config': {'candidate_count': 20, 'final_count': 8, 'use_parent_context': True, 'context_window': 'balanced', 'priority_sections': False}}
+2026-08-12 00:09:26 | INFO     | app.llm.response_generator:generate_rag_response:43 - Generating RAG response for query: sumamrize my document i have uploaded, is_summary: False
+2026-08-12 00:09:32 | INFO     | app.llm.response_generator:generate_rag_response:60 - Generated response in 6.30s
+2026-08-12 00:09:32 | INFO     | app.llm.citation_builder:add_citations_to_answer:39 - Adding 1 citations to answer
+2026-08-12 00:09:32 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-12 00:09:34 | INFO     | app.llm.hallucination_checker:check_hallucination:32 - Checking for hallucinations
+2026-08-12 00:09:34 | INFO     | app.api.widget_chat:widget_chat:205 - ChatPipeline result keys: dict_keys(['answer', 'sources', 'citations', 'confidence_score', 'processing_time_ms', 'model_used', 'retrieval_method', 'has_hallucination', 'hallucination_details', 'context_used'])
+2026-08-12 00:09:34 | INFO     | app.api.widget_chat:widget_chat:215 - Answer length: 1651
+2026-08-12 00:09:34 | INFO     | app.api.widget_chat:widget_chat:219 - Answer preview: ## Summary
+
+### Overview
+The provided context describes the development of a backend system for a chatbot management platform. The system includes various APIs and endpoints, such as /api/v1/embed/{em...
+2026-08-12 00:11:54 | INFO     | __main__:shutdown_event:134 - Shutting down KNOWA AI System

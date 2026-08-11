@@ -1,0 +1,221 @@
+.login-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8f7ff 0%,
+      #f4f7ff 100%
+    );
+}
+
+
+.login-card {
+  width: 100%;
+
+  max-width: 430px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 20px;
+
+  padding: 36px;
+
+  box-shadow:
+    0 20px 50px
+    rgba(15, 23, 42, 0.08);
+}
+
+
+/* Logo */
+
+.login-logo {
+  display: flex;
+
+  justify-content: center;
+
+  margin-bottom: 28px;
+}
+
+.login-logo .knowa-logo {
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.login-logo .knowa-logo-image {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 18px;
+}
+
+.login-logo .knowa-logo-name {
+  font-size: 23px;
+}
+
+
+/* Heading */
+
+.login-heading {
+  text-align: center;
+
+  margin-bottom: 24px;
+}
+
+.login-heading h1 {
+  margin: 0;
+
+  font-size: 27px;
+
+  color: #111827;
+}
+
+.login-heading p {
+  margin-top: 8px;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+
+/* Error */
+
+.login-error {
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  color: #b91c1c;
+
+  border-radius: 9px;
+
+  padding: 11px 13px;
+
+  font-size: 13px;
+
+  margin-bottom: 18px;
+}
+
+
+/* Form */
+
+.login-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.form-group label {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #334155;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 12px 13px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  font-size: 14px;
+
+  color: #111827;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #6d28d9;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(109, 40, 217, 0.1);
+}
+
+.form-group input:disabled {
+  background: #f8fafc;
+
+  cursor: not-allowed;
+}
+
+
+/* Button */
+
+.login-button {
+  border: none;
+
+  border-radius: 9px;
+
+  padding: 13px;
+
+  background: #6d28d9;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.login-button:hover:not(:disabled) {
+  opacity: 0.92;
+
+  transform:
+    translateY(-1px);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* Footer */
+
+.login-footer {
+  text-align: center;
+
+  margin-top: 25px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
