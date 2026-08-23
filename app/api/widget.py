@@ -19,14 +19,17 @@ async def widget_script(
     db: Session = Depends(get_db),
 ):
     """
-    Generate the JavaScript chatbot widget dynamically.
+    Generate the KNOWA AI chatbot widget dynamically.
 
     The widget:
-    - Uses the chatbot embed token
-    - Loads chatbot settings
-    - Sends queries to /api/v1/widget/chat
-    - Maintains conversation history during the current page session
-    - Supports markdown-like formatting in bot responses
+    - Loads chatbot configuration from the database
+    - Uses custom logo/avatar
+    - Uses custom colors
+    - Uses custom welcome message
+    - Uses custom placeholder
+    - Sends messages to /api/v1/widget/chat
+    - Maintains conversation history during the page session
+    - Supports basic Markdown rendering
     """
 
     # ============================================================
@@ -35,7 +38,9 @@ async def widget_script(
 
     chatbot = (
         db.query(Chatbot)
-        .filter(Chatbot.embed_token == embed_token)
+        .filter(
+            Chatbot.embed_token == embed_token
+        )
         .first()
     )
 
@@ -46,12 +51,14 @@ async def widget_script(
         )
 
     # ============================================================
-    # FIND CHATBOT SETTINGS
+    # FIND SETTINGS
     # ============================================================
 
     settings = (
         db.query(ChatbotSettings)
-        .filter(ChatbotSettings.chatbot_id == chatbot.id)
+        .filter(
+            ChatbotSettings.chatbot_id == chatbot.id
+        )
         .first()
     )
 
@@ -62,68 +69,161 @@ async def widget_script(
         )
 
     # ============================================================
-    # SAFELY PREPARE PYTHON VALUES
+    # DATABASE VALUES
     # ============================================================
 
-    # repr() creates valid JavaScript string literals.
-    js_embed_token = repr(chatbot.embed_token)
-    js_name = repr(chatbot.name or "My Bot")
-    js_welcome = repr(
+    chatbot_name = chatbot.name or "KNOWA AI"
+
+    welcome_message = (
         settings.welcome_message
         or "Hi! How can I help you today?"
     )
-    js_placeholder = repr(
+
+    placeholder = (
         settings.placeholder
         or "Ask me anything..."
     )
 
-    primary_color = settings.primary_color or "#2563eb"
-    widget_width = settings.widget_width or "380px"
-    widget_height = settings.widget_height or "600px"
-    border_radius = settings.border_radius or "16px"
+    primary_color = (
+        settings.primary_color
+        or "#2563eb"
+    )
+
+    secondary_color = (
+        settings.secondary_color
+        or "#ffffff"
+    )
+
+    widget_width = (
+        settings.widget_width
+        or "380px"
+    )
+
+    widget_height = (
+        settings.widget_height
+        or "600px"
+    )
+
+    border_radius = (
+        settings.border_radius
+        or "16px"
+    )
+
+    position = (
+        settings.position
+        or "bottom-right"
+    )
 
     # ============================================================
-    # JAVASCRIPT WIDGET
+    # LOGO
+    # ============================================================
+    #
+    # Priority:
+    #
+    # 1. Custom logo_url
+    # 2. avatar_url
+    # 3. Default KNOWA logo
+    #
+
+    logo_url = (
+        settings.logo_url
+        or settings.avatar_url
+        or "/static/knowa-logo.jpg"
+    )
+
+    # ============================================================
+    # SAFELY CREATE JAVASCRIPT STRINGS
     # ============================================================
 
-    js = f"""
-(function () {{
+    import json
+
+    js_embed_token = json.dumps(
+        chatbot.embed_token
+    )
+
+    js_chatbot_name = json.dumps(
+        chatbot_name
+    )
+
+    js_welcome_message = json.dumps(
+        welcome_message
+    )
+
+    js_placeholder = json.dumps(
+        placeholder
+    )
+
+    js_logo_url = json.dumps(
+        logo_url
+    )
+
+    # ============================================================
+    # JAVASCRIPT TEMPLATE
+    #
+    # IMPORTANT:
+    #
+    # This is NOT an f-string.
+    #
+    # Dynamic values are inserted later using .replace().
+    #
+    # This prevents:
+    #
+    # SyntaxError: f-string: single '}' is not allowed
+    # ============================================================
+
+    js = r"""
+(function () {
 
     "use strict";
 
+
     // ============================================================
-    // EMBED TOKEN
+    // CONFIGURATION
     // ============================================================
 
-    const EMBED_TOKEN = {js_embed_token};
+    const EMBED_TOKEN = __EMBED_TOKEN__;
 
-    console.log(
-        "Widget initialized with embed token:",
-        EMBED_TOKEN
-    );
+    const CHATBOT_NAME = __CHATBOT_NAME__;
+
+    const WELCOME_MESSAGE = __WELCOME_MESSAGE__;
+
+    const PLACEHOLDER = __PLACEHOLDER__;
+
+    const CONFIGURED_LOGO_URL = __LOGO_URL__;
+
+
+    // ============================================================
+    // API BASE
+    // ============================================================
+
+    let API_BASE =
+        "http://localhost:8000/api/v1";
+
+    let STATIC_BASE =
+        "http://localhost:8000/static";
 
 
     // ============================================================
     // DETERMINE SCRIPT URL
     // ============================================================
 
-    const SCRIPT_URL = document.currentScript
-        ? document.currentScript.src
-        : "";
+    const currentScript =
+        document.currentScript;
 
 
-    // ============================================================
-    // DETERMINE API BASE URL
-    // ============================================================
+    const SCRIPT_URL =
+        currentScript
+            ? currentScript.src
+            : "";
 
-    let API_BASE = "http://localhost:8000/api/v1";
-    let STATIC_BASE = "http://localhost:8000/static";
 
-    if (SCRIPT_URL) {{
+    if (SCRIPT_URL) {
 
-        try {{
+        try {
 
-            const scriptUrl = new URL(SCRIPT_URL);
+            const scriptUrl =
+                new URL(SCRIPT_URL);
+
 
             API_BASE =
                 scriptUrl.protocol +
@@ -131,37 +231,106 @@ async def widget_script(
                 scriptUrl.host +
                 "/api/v1";
 
+
             STATIC_BASE =
                 scriptUrl.protocol +
                 "//" +
                 scriptUrl.host +
                 "/static";
 
+
             console.log(
-                "Widget loaded from:",
+                "KNOWA AI Widget loaded from:",
                 SCRIPT_URL
             );
+
 
             console.log(
                 "Using API base:",
                 API_BASE
             );
 
+
             console.log(
                 "Using static base:",
                 STATIC_BASE
             );
 
-        }} catch (error) {{
+        } catch (error) {
 
             console.warn(
-                "Could not determine API base URL:",
+                "Could not determine widget URL:",
                 error
             );
 
-        }}
+        }
 
-    }}
+    }
+
+
+    // ============================================================
+    // LOGO URL
+    // ============================================================
+
+    function resolveLogoUrl(url) {
+
+        if (!url) {
+
+            return (
+                STATIC_BASE +
+                "/knowa-logo.jpg"
+            );
+
+        }
+
+
+        if (
+            url.startsWith("http://") ||
+            url.startsWith("https://")
+        ) {
+
+            return url;
+
+        }
+
+
+        if (url.startsWith("/")) {
+
+            return (
+                new URL(
+                    url,
+                    window.location.origin
+                ).href
+            );
+
+        }
+
+
+        return (
+            STATIC_BASE +
+            "/" +
+            url.replace(/^\/+/, "")
+        );
+
+    }
+
+
+    const LOGO_URL =
+        resolveLogoUrl(
+            CONFIGURED_LOGO_URL
+        );
+
+
+    console.log(
+        "KNOWA AI configured logo:",
+        CONFIGURED_LOGO_URL
+    );
+
+
+    console.log(
+        "KNOWA AI final logo URL:",
+        LOGO_URL
+    );
 
 
     // ============================================================
@@ -172,46 +341,52 @@ async def widget_script(
         document.getElementById(
             "knowa-ai-widget"
         )
-    ) {{
+    ) {
 
         console.log(
             "KNOWA AI Widget already loaded."
         );
 
         return;
-    }}
+
+    }
 
 
     // ============================================================
     // CONVERSATION HISTORY
-    //
-    // This exists only while the current page is open.
-    // Refreshing the page clears it.
     // ============================================================
 
     let conversationHistory = [];
 
 
     // ============================================================
-    // CONTAINER
+    // CREATE CONTAINER
     // ============================================================
 
     const container =
         document.createElement("div");
+
 
     container.id =
         "knowa-ai-widget";
 
 
     // ============================================================
-    // WIDGET HTML + CSS
+    // WIDGET HTML
     // ============================================================
 
     container.innerHTML = `
+
         <style>
 
-            #eai-chat-button {{
+            /* ==================================================
+               FLOATING BUTTON
+            ================================================== */
+
+            #eai-chat-button {
+
                 position: fixed;
+
                 right: 20px;
                 bottom: 20px;
 
@@ -219,9 +394,11 @@ async def widget_script(
                 height: 60px;
 
                 border: none;
+
                 border-radius: 50%;
 
-                background: {primary_color};
+                background: __PRIMARY_COLOR__;
+
                 color: white;
 
                 cursor: pointer;
@@ -233,26 +410,43 @@ async def widget_script(
                 z-index: 999999;
 
                 display: flex;
+
                 align-items: center;
+
                 justify-content: center;
+
                 padding: 0;
-            }}
 
-            #eai-chat-button img {{
-                width: 36px;
-                height: 36px;
+                overflow: hidden;
+
+            }
+
+
+            #eai-chat-button-logo {
+
+                width: 38px;
+                height: 38px;
+
                 object-fit: contain;
-            }}
+
+                border-radius: 50%;
+
+            }
 
 
-            #eai-chat-window {{
+            /* ==================================================
+               CHAT WINDOW
+            ================================================== */
+
+            #eai-chat-window {
+
                 position: fixed;
 
-                right: 20px;
-                bottom: 90px;
+                __POSITION_CSS__
 
-                width: {widget_width};
-                height: {widget_height};
+                width: __WIDGET_WIDTH__;
+
+                height: __WIDGET_HEIGHT__;
 
                 max-width:
                     calc(100vw - 40px);
@@ -260,9 +454,11 @@ async def widget_script(
                 max-height:
                     calc(100vh - 120px);
 
-                background: white;
+                background:
+                    __SECONDARY_COLOR__;
 
-                border-radius: {border_radius};
+                border-radius:
+                    __BORDER_RADIUS__;
 
                 box-shadow:
                     0 8px 30px
@@ -279,15 +475,22 @@ async def widget_script(
                     sans-serif;
 
                 z-index: 999999;
-            }}
+
+            }
 
 
-            #eai-chat-header {{
-                background: {primary_color};
+            /* ==================================================
+               HEADER
+            ================================================== */
+
+            #eai-chat-header {
+
+                background:
+                    __PRIMARY_COLOR__;
 
                 color: white;
 
-                padding: 15px;
+                padding: 14px 15px;
 
                 display: flex;
 
@@ -296,279 +499,521 @@ async def widget_script(
 
                 align-items: center;
 
-                font-weight: bold;
-            }}
+                min-height: 60px;
 
-            #eai-chat-header-brand {{
+                box-sizing:
+                    border-box;
+
+            }
+
+
+            #eai-chat-header-brand {
+
                 display: flex;
+
                 align-items: center;
+
                 gap: 10px;
-            }}
 
-            #eai-chat-header-logo {{
-                width: 32px;
-                height: 32px;
+                min-width: 0;
+
+            }
+
+
+            #eai-chat-header-logo {
+
+                width: 36px;
+
+                height: 36px;
+
                 object-fit: contain;
-            }}
 
-            #eai-chat-header-brand > div {{
+                border-radius: 50%;
+
+                background: white;
+
+                flex-shrink: 0;
+
+            }
+
+
+            #eai-chat-header-brand-text {
+
                 display: flex;
+
                 flex-direction: column;
+
                 line-height: 1.2;
-            }}
 
-            #eai-chat-header-name {{
+                min-width: 0;
+
+            }
+
+
+            #eai-chat-header-name {
+
                 font-size: 15px;
+
                 font-weight: 600;
-            }}
 
-            #eai-chat-header-platform {{
+                white-space: nowrap;
+
+                overflow: hidden;
+
+                text-overflow: ellipsis;
+
+            }
+
+
+            #eai-chat-header-platform {
+
                 font-size: 11px;
-                color: rgba(255, 255, 255, 0.8);
-            }}
+
+                color:
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.8
+                    );
+
+                margin-top: 3px;
+
+            }
 
 
-            #eai-chat-close {{
+            #eai-chat-close {
+
                 border: none;
 
-                background: transparent;
+                background:
+                    transparent;
 
                 color: white;
 
-                font-size: 20px;
+                font-size: 22px;
 
                 cursor: pointer;
-            }}
+
+                padding: 4px 7px;
+
+            }
 
 
-            #eai-chat-messages {{
+            /* ==================================================
+               MESSAGES
+            ================================================== */
+
+            #eai-chat-messages {
+
                 flex: 1;
 
                 padding: 15px;
 
                 overflow-y: auto;
 
-                background: #f8fafc;
-            }}
+                background:
+                    #f8fafc;
+
+            }
 
 
-            .eai-message {{
-                padding: 10px 12px;
+            .eai-message {
 
-                margin-bottom: 10px;
+                padding:
+                    10px 12px;
 
-                border-radius: 10px;
+                margin-bottom:
+                    10px;
 
-                line-height: 1.5;
+                border-radius:
+                    10px;
 
-                word-wrap: break-word;
-            }}
+                line-height:
+                    1.5;
 
+                word-wrap:
+                    break-word;
 
-            .eai-user-message {{
-                background: #dbeafe;
+                font-size:
+                    14px;
 
-                margin-left: 30px;
-
-                white-space: pre-wrap;
-            }}
-
-
-            .eai-bot-message {{
-                background: #f1f5f9;
-
-                margin-right: 30px;
-
-                white-space: normal;
-            }}
+            }
 
 
-            .eai-bot-message h1 {{
-                font-size: 20px;
-                margin: 8px 0;
-            }}
+            .eai-user-message {
+
+                background:
+                    #dbeafe;
+
+                margin-left:
+                    30px;
+
+                white-space:
+                    pre-wrap;
+
+            }
 
 
-            .eai-bot-message h2 {{
-                font-size: 18px;
-                margin: 8px 0;
-            }}
+            .eai-bot-message {
+
+                background:
+                    #f1f5f9;
+
+                margin-right:
+                    30px;
+
+                white-space:
+                    normal;
+
+            }
 
 
-            .eai-bot-message h3 {{
-                font-size: 16px;
-                margin: 8px 0;
-            }}
+            .eai-bot-message h1 {
+
+                font-size:
+                    20px;
+
+                margin:
+                    8px 0;
+
+            }
 
 
-            .eai-bot-message ul {{
-                margin: 6px 0;
-                padding-left: 22px;
-            }}
+            .eai-bot-message h2 {
+
+                font-size:
+                    18px;
+
+                margin:
+                    8px 0;
+
+            }
 
 
-            .eai-bot-message ol {{
-                margin: 6px 0;
-                padding-left: 22px;
-            }}
+            .eai-bot-message h3 {
+
+                font-size:
+                    16px;
+
+                margin:
+                    8px 0;
+
+            }
 
 
-            .eai-bot-message li {{
-                margin-bottom: 4px;
-            }}
+            .eai-bot-message ul {
+
+                margin:
+                    6px 0;
+
+                padding-left:
+                    22px;
+
+            }
 
 
-            .eai-bot-message strong {{
-                font-weight: bold;
-            }}
+            .eai-bot-message ol {
+
+                margin:
+                    6px 0;
+
+                padding-left:
+                    22px;
+
+            }
 
 
-            .eai-bot-message code {{
-                background: #e2e8f0;
+            .eai-bot-message li {
 
-                padding: 2px 5px;
+                margin-bottom:
+                    4px;
 
-                border-radius: 4px;
-
-                font-family: monospace;
-            }}
+            }
 
 
-            .eai-bot-message pre {{
-                background: #1e293b;
+            .eai-bot-message strong {
 
-                color: white;
+                font-weight:
+                    bold;
 
-                padding: 12px;
-
-                border-radius: 8px;
-
-                overflow-x: auto;
-
-                white-space: pre-wrap;
-            }}
+            }
 
 
-            #eai-chat-input-area {{
-                display: flex;
+            .eai-bot-message code {
 
-                padding: 10px;
+                background:
+                    #e2e8f0;
+
+                padding:
+                    2px 5px;
+
+                border-radius:
+                    4px;
+
+                font-family:
+                    monospace;
+
+            }
+
+
+            .eai-bot-message pre {
+
+                background:
+                    #1e293b;
+
+                color:
+                    white;
+
+                padding:
+                    12px;
+
+                border-radius:
+                    8px;
+
+                overflow-x:
+                    auto;
+
+                white-space:
+                    pre-wrap;
+
+            }
+
+
+            /* ==================================================
+               INPUT
+            ================================================== */
+
+            #eai-chat-input-area {
+
+                display:
+                    flex;
+
+                padding:
+                    10px;
 
                 border-top:
                     1px solid #e2e8f0;
 
-                background: white;
+                background:
+                    white;
 
-                gap: 8px;
-            }}
+                gap:
+                    8px;
+
+            }
 
 
-            #eai-chat-input {{
-                flex: 1;
+            #eai-chat-input {
+
+                flex:
+                    1;
 
                 border:
                     1px solid #cbd5e1;
 
-                border-radius: 8px;
+                border-radius:
+                    8px;
 
-                padding: 10px;
+                padding:
+                    10px;
 
-                outline: none;
+                outline:
+                    none;
 
-                font-size: 14px;
-            }}
+                font-size:
+                    14px;
 
+                min-width:
+                    0;
 
-            #eai-chat-input:focus {{
-                border-color: {primary_color};
-            }}
-
-
-            #eai-chat-send {{
-                border: none;
-
-                border-radius: 8px;
-
-                padding: 10px 15px;
-
-                background: {primary_color};
-
-                color: white;
-
-                cursor: pointer;
-
-                font-weight: bold;
-            }}
+            }
 
 
-            #eai-chat-send:disabled {{
-                opacity: 0.6;
+            #eai-chat-input:focus {
 
-                cursor: not-allowed;
-            }}
+                border-color:
+                    __PRIMARY_COLOR__;
 
-
-            .eai-typing {{
-                font-style: italic;
-
-                color: #64748b;
-            }}
-
-            #eai-chat-footer {{
-                padding: 8px 15px;
-                border-top: 1px solid #e2e8f0;
-                background: #f8fafc;
-                text-align: center;
-                font-size: 11px;
-                color: #94a3b8;
-            }}
+            }
 
 
-            @media (max-width: 600px) {{
+            #eai-chat-send {
 
-                #eai-chat-window {{
-                    right: 10px;
+                border:
+                    none;
 
-                    bottom: 80px;
+                border-radius:
+                    8px;
+
+                padding:
+                    10px 15px;
+
+                background:
+                    __PRIMARY_COLOR__;
+
+                color:
+                    white;
+
+                cursor:
+                    pointer;
+
+                font-weight:
+                    bold;
+
+            }
+
+
+            #eai-chat-send:disabled {
+
+                opacity:
+                    0.6;
+
+                cursor:
+                    not-allowed;
+
+            }
+
+
+            /* ==================================================
+               TYPING
+            ================================================== */
+
+            .eai-typing {
+
+                font-style:
+                    italic;
+
+                color:
+                    #64748b;
+
+            }
+
+
+            /* ==================================================
+               FOOTER
+            ================================================== */
+
+            #eai-chat-footer {
+
+                padding:
+                    8px 15px;
+
+                border-top:
+                    1px solid #e2e8f0;
+
+                background:
+                    #f8fafc;
+
+                text-align:
+                    center;
+
+                font-size:
+                    11px;
+
+                color:
+                    #94a3b8;
+
+            }
+
+
+            /* ==================================================
+               MOBILE
+            ================================================== */
+
+            @media (max-width: 600px) {
+
+                #eai-chat-window {
+
+                    left:
+                        10px;
+
+                    right:
+                        10px;
+
+                    bottom:
+                        80px;
+
+                    top:
+                        auto;
 
                     width:
                         calc(100vw - 20px);
 
                     height:
                         calc(100vh - 110px);
-                }}
+
+                }
 
 
-                #eai-chat-button {{
-                    right: 15px;
+                #eai-chat-button {
 
-                    bottom: 15px;
-                }}
+                    right:
+                        15px;
 
-            }}
+                    bottom:
+                        15px;
+
+                }
+
+            }
 
         </style>
 
+
+        <!-- FLOATING BUTTON -->
 
         <button
             id="eai-chat-button"
             aria-label="Open chat"
         >
-            <img src="${{STATIC_BASE}}/knowa-logo.jpg" alt="KNOWA AI" />
+
+            <img
+                id="eai-chat-button-logo"
+                src="${LOGO_URL}"
+                alt="KNOWA AI"
+            />
+
         </button>
 
 
+        <!-- CHAT WINDOW -->
+
         <div id="eai-chat-window">
+
+
+            <!-- HEADER -->
 
             <div id="eai-chat-header">
 
                 <div id="eai-chat-header-brand">
-                    <img id="eai-chat-header-logo" src="${{STATIC_BASE}}/knowa-logo.jpg" alt="KNOWA AI" />
-                    <div>
-                        <span id="eai-chat-header-name">{js_name}</span>
-                        <span id="eai-chat-header-platform">| KNOWA AI</span>
+
+                    <img
+                        id="eai-chat-header-logo"
+                        src="${LOGO_URL}"
+                        alt="KNOWA AI"
+                    />
+
+
+                    <div id="eai-chat-header-brand-text">
+
+                        <span
+                            id="eai-chat-header-name"
+                        >
+                            ${CHATBOT_NAME}
+                        </span>
+
+
+                        <span
+                            id="eai-chat-header-platform"
+                        >
+                            | KNOWA AI
+                        </span>
+
                     </div>
+
                 </div>
+
 
                 <button
                     id="eai-chat-close"
@@ -580,34 +1025,104 @@ async def widget_script(
             </div>
 
 
-            <div id="eai-chat-messages"></div>
+            <!-- MESSAGES -->
 
+            <div id="eai-chat-messages">
+            </div>
+
+
+            <!-- INPUT -->
 
             <div id="eai-chat-input-area">
 
                 <input
                     id="eai-chat-input"
                     type="text"
-                    placeholder={js_placeholder}
+                    placeholder="${PLACEHOLDER}"
                     autocomplete="off"
                 />
 
 
-                <button id="eai-chat-send">
+                <button
+                    id="eai-chat-send"
+                >
                     Send
                 </button>
 
             </div>
 
+
+            <!-- FOOTER -->
+
             <div id="eai-chat-footer">
                 Powered by KNOWA AI
             </div>
 
+
         </div>
+
     `;
 
 
-    document.body.appendChild(container);
+    // ============================================================
+    // APPEND WIDGET
+    // ============================================================
+
+    document.body.appendChild(
+        container
+    );
+
+
+    // ============================================================
+    // LOGO FALLBACK
+    // ============================================================
+
+    function setupLogoFallback() {
+
+        const logoElements = [
+
+            document.getElementById(
+                "eai-chat-button-logo"
+            ),
+
+            document.getElementById(
+                "eai-chat-header-logo"
+            )
+
+        ];
+
+
+        logoElements.forEach(
+            function (logo) {
+
+                if (!logo) {
+                    return;
+                }
+
+
+                logo.addEventListener(
+                    "error",
+                    function () {
+
+                        console.warn(
+                            "Custom logo could not be loaded. Falling back to KNOWA logo."
+                        );
+
+
+                        logo.src =
+                            STATIC_BASE +
+                            "/knowa-logo.jpg";
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+    setupLogoFallback();
 
 
     // ============================================================
@@ -656,13 +1171,14 @@ async def widget_script(
 
     chatButton.addEventListener(
         "click",
-        function () {{
+        function () {
 
-            chatWindow.style.display = "flex";
+            chatWindow.style.display =
+                "flex";
 
             input.focus();
 
-        }}
+        }
     );
 
 
@@ -672,11 +1188,12 @@ async def widget_script(
 
     closeButton.addEventListener(
         "click",
-        function () {{
+        function () {
 
-            chatWindow.style.display = "none";
+            chatWindow.style.display =
+                "none";
 
-        }}
+        }
     );
 
 
@@ -684,31 +1201,39 @@ async def widget_script(
     // ESCAPE HTML
     // ============================================================
 
-    function escapeHtml(text) {{
+    function escapeHtml(text) {
 
         const div =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        div.textContent = text;
+
+        div.textContent =
+            text;
+
 
         return div.innerHTML;
-    }}
+
+    }
 
 
     // ============================================================
     // MARKDOWN RENDERER
     // ============================================================
 
-    function renderMarkdown(text) {{
+    function renderMarkdown(text) {
 
         let html =
-            escapeHtml(text);
+            escapeHtml(
+                text
+            );
 
 
         // Code blocks
 
         html = html.replace(
-            /```(?:[a-zA-Z0-9_+-]+)?\\n?([\\s\\S]*?)```/g,
+            /```(?:[a-zA-Z0-9_+-]+)?\n?([\s\S]*?)```/g,
             "<pre><code>$1</code></pre>"
         );
 
@@ -736,7 +1261,7 @@ async def widget_script(
         // Bold
 
         html = html.replace(
-            /\\*\\*(.*?)\\*\\*/g,
+            /\*\*(.*?)\*\*/g,
             "<strong>$1</strong>"
         );
 
@@ -744,16 +1269,17 @@ async def widget_script(
         // Inline code
 
         html = html.replace(
-            /`([^`\\n]+)`/g,
+            /`([^`\n]+)`/g,
             "<code>$1</code>"
         );
 
 
         const lines =
-            html.split("\\n");
+            html.split("\n");
 
 
         const result = [];
+
 
         let inUl = false;
 
@@ -764,7 +1290,7 @@ async def widget_script(
             let i = 0;
             i < lines.length;
             i++
-        ) {{
+        ) {
 
             const line =
                 lines[i];
@@ -772,25 +1298,27 @@ async def widget_script(
 
             const ulMatch =
                 line.match(
-                    /^\\s*[-*]\\s+(.*)$/
+                    /^\s*[-*]\s+(.*)$/
                 );
 
 
             const olMatch =
                 line.match(
-                    /^\\s*\\d+\\.\\s+(.*)$/
+                    /^\s*\d+\.\s+(.*)$/
                 );
 
 
-            if (ulMatch) {{
+            if (ulMatch) {
 
-                if (!inUl) {{
+                if (!inUl) {
 
-                    result.push("<ul>");
+                    result.push(
+                        "<ul>"
+                    );
 
                     inUl = true;
 
-                }}
+                }
 
 
                 result.push(
@@ -801,18 +1329,21 @@ async def widget_script(
 
 
                 continue;
-            }}
+
+            }
 
 
-            if (olMatch) {{
+            if (olMatch) {
 
-                if (!inOl) {{
+                if (!inOl) {
 
-                    result.push("<ol>");
+                    result.push(
+                        "<ol>"
+                    );
 
                     inOl = true;
 
-                }}
+                }
 
 
                 result.push(
@@ -823,34 +1354,41 @@ async def widget_script(
 
 
                 continue;
-            }}
+
+            }
 
 
-            if (inUl) {{
+            if (inUl) {
 
-                result.push("</ul>");
+                result.push(
+                    "</ul>"
+                );
 
                 inUl = false;
 
-            }}
+            }
 
 
-            if (inOl) {{
+            if (inOl) {
 
-                result.push("</ol>");
+                result.push(
+                    "</ol>"
+                );
 
                 inOl = false;
 
-            }}
+            }
 
 
             if (
                 line.trim() === ""
-            ) {{
+            ) {
 
-                result.push("<br>");
+                result.push(
+                    "<br>"
+                );
 
-            }} else {{
+            } else {
 
                 result.push(
                     "<span>" +
@@ -858,27 +1396,32 @@ async def widget_script(
                     "</span><br>"
                 );
 
-            }}
+            }
 
-        }}
-
-
-        if (inUl) {{
-
-            result.push("</ul>");
-
-        }}
+        }
 
 
-        if (inOl) {{
+        if (inUl) {
 
-            result.push("</ol>");
+            result.push(
+                "</ul>"
+            );
 
-        }}
+        }
+
+
+        if (inOl) {
+
+            result.push(
+                "</ol>"
+            );
+
+        }
 
 
         return result.join("");
-    }}
+
+    }
 
 
     // ============================================================
@@ -888,10 +1431,12 @@ async def widget_script(
     function addMessage(
         text,
         type
-    ) {{
+    ) {
 
         const message =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         message.className =
@@ -903,17 +1448,19 @@ async def widget_script(
             );
 
 
-        if (type === "bot") {{
+        if (type === "bot") {
 
             message.innerHTML =
-                renderMarkdown(text);
+                renderMarkdown(
+                    text
+                );
 
-        }} else {{
+        } else {
 
             message.textContent =
                 text;
 
-        }}
+        }
 
 
         messages.appendChild(
@@ -926,7 +1473,8 @@ async def widget_script(
 
 
         return message;
-    }}
+
+    }
 
 
     // ============================================================
@@ -934,7 +1482,7 @@ async def widget_script(
     // ============================================================
 
     addMessage(
-        {js_welcome},
+        WELCOME_MESSAGE,
         "bot"
     );
 
@@ -943,7 +1491,7 @@ async def widget_script(
     // SEND MESSAGE
     // ============================================================
 
-    async function sendMessage() {{
+    async function sendMessage() {
 
         const text =
             input.value.trim();
@@ -952,11 +1500,11 @@ async def widget_script(
         if (
             !text ||
             sendButton.disabled
-        ) {{
+        ) {
 
             return;
 
-        }}
+        }
 
 
         // Show user message
@@ -970,7 +1518,8 @@ async def widget_script(
         input.value = "";
 
 
-        sendButton.disabled = true;
+        sendButton.disabled =
+            true;
 
 
         // Typing indicator
@@ -987,13 +1536,13 @@ async def widget_script(
         );
 
 
-        try {{
+        try {
 
             // ====================================================
             // REQUEST BODY
             // ====================================================
 
-            const requestBody = {{
+            const requestBody = {
 
                 embed_token:
                     EMBED_TOKEN,
@@ -1004,17 +1553,11 @@ async def widget_script(
                 conversation_history:
                     conversationHistory
 
-            }};
+            };
 
 
             console.log(
-                "Sending request to:",
-                API_BASE + "/widget/chat"
-            );
-
-
-            console.log(
-                "Request payload:",
+                "Sending widget request:",
                 requestBody
             );
 
@@ -1025,66 +1568,62 @@ async def widget_script(
 
             const response =
                 await fetch(
-                    API_BASE + "/widget/chat",
-                    {{
+                    API_BASE +
+                    "/widget/chat",
+                    {
 
-                        method: "POST",
+                        method:
+                            "POST",
 
-                        headers: {{
+                        headers: {
+
                             "Content-Type":
                                 "application/json",
 
                             "Accept":
                                 "application/json"
-                        }},
+
+                        },
 
                         body:
                             JSON.stringify(
                                 requestBody
                             )
 
-                    }}
+                    }
                 );
 
 
-            console.log(
-                "Response status:",
-                response.status
-            );
-
-
             // ====================================================
-            // PARSE RESPONSE
+            // RESPONSE
             // ====================================================
 
-            let data = {{}};
+            let data = {};
 
 
-            try {{
+            try {
 
                 data =
                     await response.json();
 
-            }} catch (jsonError) {{
+            } catch (error) {
 
                 console.error(
-                    "Failed to parse API response:",
-                    jsonError
+                    "Failed to parse widget response:",
+                    error
                 );
 
-            }}
+            }
 
-
-            // Remove typing indicator
 
             typingMessage.remove();
 
 
             // ====================================================
-            // HANDLE ERROR
+            // ERROR
             // ====================================================
 
-            if (!response.ok) {{
+            if (!response.ok) {
 
                 console.error(
                     "Widget API error:",
@@ -1100,21 +1639,18 @@ async def widget_script(
 
 
                 return;
-            }}
+
+            }
 
 
             // ====================================================
-            // GET ANSWER
+            // ANSWER
             // ====================================================
 
             const answer =
                 data.answer ||
                 "I couldn't generate an answer.";
 
-
-            // ====================================================
-            // DISPLAY ANSWER
-            // ============================================================
 
             addMessage(
                 answer,
@@ -1123,34 +1659,32 @@ async def widget_script(
 
 
             // ====================================================
-            // STORE CONVERSATION HISTORY
-            // ============================================================
+            // CONVERSATION HISTORY
+            // ====================================================
 
-            conversationHistory.push({{
+            conversationHistory.push({
 
-                role: "user",
+                role:
+                    "user",
 
-                content: text
+                content:
+                    text
 
-            }});
-
-
-            conversationHistory.push({{
-
-                role: "assistant",
-
-                content: answer
-
-            }});
+            });
 
 
-            console.log(
-                "Updated conversation history:",
-                conversationHistory
-            );
+            conversationHistory.push({
+
+                role:
+                    "assistant",
+
+                content:
+                    answer
+
+            });
 
 
-        }} catch (error) {{
+        } catch (error) {
 
             console.error(
                 "Widget chat error:",
@@ -1166,16 +1700,16 @@ async def widget_script(
                 "bot"
             );
 
+        } finally {
 
-        }} finally {{
-
-            sendButton.disabled = false;
+            sendButton.disabled =
+                false;
 
             input.focus();
 
-        }}
+        }
 
-    }}
+    }
 
 
     // ============================================================
@@ -1194,34 +1728,115 @@ async def widget_script(
 
     input.addEventListener(
         "keydown",
-        function (event) {{
+        function (event) {
 
             if (
                 event.key === "Enter" &&
                 !event.shiftKey
-            ) {{
+            ) {
 
                 event.preventDefault();
 
                 sendMessage();
 
-            }}
+            }
 
-        }}
+        }
     );
 
 
     // ============================================================
-    // WIDGET READY
+    // READY
     // ============================================================
 
     console.log(
         "KNOWA AI Widget ready."
     );
 
-
-}})();
+})();
 """
+
+    # ============================================================
+    # POSITION CSS
+    # ============================================================
+
+    position_css = (
+        "right: 20px; bottom: 90px;"
+    )
+
+    if position == "bottom-left":
+        position_css = (
+            "left: 20px; bottom: 90px;"
+        )
+
+    elif position == "top-right":
+        position_css = (
+            "right: 20px; top: 90px;"
+        )
+
+    elif position == "top-left":
+        position_css = (
+            "left: 20px; top: 90px;"
+        )
+
+    # ============================================================
+    # INSERT VALUES
+    # ============================================================
+
+    js = js.replace(
+        "__EMBED_TOKEN__",
+        js_embed_token,
+    )
+
+    js = js.replace(
+        "__CHATBOT_NAME__",
+        js_chatbot_name,
+    )
+
+    js = js.replace(
+        "__WELCOME_MESSAGE__",
+        js_welcome_message,
+    )
+
+    js = js.replace(
+        "__PLACEHOLDER__",
+        js_placeholder,
+    )
+
+    js = js.replace(
+        "__LOGO_URL__",
+        js_logo_url,
+    )
+
+    js = js.replace(
+        "__PRIMARY_COLOR__",
+        primary_color,
+    )
+
+    js = js.replace(
+        "__SECONDARY_COLOR__",
+        secondary_color,
+    )
+
+    js = js.replace(
+        "__WIDGET_WIDTH__",
+        widget_width,
+    )
+
+    js = js.replace(
+        "__WIDGET_HEIGHT__",
+        widget_height,
+    )
+
+    js = js.replace(
+        "__BORDER_RADIUS__",
+        border_radius,
+    )
+
+    js = js.replace(
+        "__POSITION_CSS__",
+        position_css,
+    )
 
     # ============================================================
     # RETURN JAVASCRIPT
@@ -1231,8 +1846,13 @@ async def widget_script(
         content=js,
         media_type="application/javascript",
         headers={
-            "Cache-Control": "no-cache, no-store, must-revalidate",
-            "Pragma": "no-cache",
-            "Expires": "0",
+            "Cache-Control":
+                "no-cache, no-store, must-revalidate",
+
+            "Pragma":
+                "no-cache",
+
+            "Expires":
+                "0",
         },
     )

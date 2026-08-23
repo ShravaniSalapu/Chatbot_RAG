@@ -1277,7 +1277,7 @@ function ManageChatbot() {
                 }}
               >
 
-                <div className="preview-avatar">
+                {/* <div className="preview-avatar">
 
                   {settings.avatar_url ? (
                     <img
@@ -1289,6 +1289,21 @@ function ManageChatbot() {
                   ) : (
                     "S"
                   )}
+
+                </div> */}
+                <div className="preview-avatar">
+
+                  {settings.logo_url || settings.avatar_url ? (
+                   <img
+                    src={
+                      settings.logo_url ||
+                      settings.avatar_url
+                    }
+                    alt="Bot"
+                  />
+                ) : (
+                  "S"
+                )}
 
                 </div>
 

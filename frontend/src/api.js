@@ -1,6 +1,57 @@
 const API_BASE_URL = "http://localhost:8000/api/v1";
 
 /* =========================================================
+   REGISTER
+========================================================= */
+
+export async function registerUser(tenantName, fullName, email, password) {
+  const payload = {
+    tenant_name: tenantName,
+    full_name: fullName,
+    email,
+    password,
+  };
+
+  const response = await fetch(`${API_BASE_URL}/auth/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  let data = {};
+  try {
+    data = await response.json();
+  } catch {
+    data = {};
+  }
+
+  if (!response.ok) {
+    // Handle different error formats
+    let errorMessage = "Registration failed. Please try again.";
+    
+    if (data.detail) {
+      if (typeof data.detail === 'string') {
+        errorMessage = data.detail;
+      } else if (Array.isArray(data.detail)) {
+        errorMessage = data.detail.map(err => 
+          typeof err === 'string' ? err : (err.msg || JSON.stringify(err))
+        ).join(', ');
+      } else if (typeof data.detail === 'object') {
+        errorMessage = JSON.stringify(data.detail);
+      }
+    }
+    
+    throw new Error(errorMessage);
+  }
+
+  return data;
+}
+
+
+/* =========================================================
    LOGIN
 ========================================================= */
 
@@ -30,10 +81,22 @@ export async function loginUser(email, password) {
   }
 
   if (!response.ok) {
-    throw new Error(
-      data.detail ||
-        "Login failed. Please check your email and password."
-    );
+    // Handle different error formats
+    let errorMessage = "Login failed. Please check your email and password.";
+    
+    if (data.detail) {
+      if (typeof data.detail === 'string') {
+        errorMessage = data.detail;
+      } else if (Array.isArray(data.detail)) {
+        errorMessage = data.detail.map(err => 
+          typeof err === 'string' ? err : (err.msg || JSON.stringify(err))
+        ).join(', ');
+      } else if (typeof data.detail === 'object') {
+        errorMessage = JSON.stringify(data.detail);
+      }
+    }
+    
+    throw new Error(errorMessage);
   }
 
   /* Store access token */
@@ -43,8 +106,7 @@ export async function loginUser(email, password) {
     data.access_token
   );
 
-  /* Store user information */
-
+  /* Store user information from login response */
   localStorage.setItem(
     "user",
     JSON.stringify({
@@ -86,6 +148,39 @@ export function getStoredUser() {
 export function logoutUser() {
   localStorage.removeItem("access_token");
   localStorage.removeItem("user");
+}
+
+
+export async function getCurrentUser() {
+  const token = getAccessToken();
+  if (!token) {
+    throw new Error("No authentication token found");
+  }
+
+  const response = await fetch(`${API_BASE_URL}/auth/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  let data = {};
+  try {
+    data = await response.json();
+  } catch {
+    data = {};
+  }
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      logoutUser();
+      throw new Error("Your session has expired. Please log in again.");
+    }
+    throw new Error(data.detail || `Request failed with status ${response.status}`);
+  }
+
+  return data;
 }
 
 

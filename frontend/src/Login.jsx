@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import {
   loginUser,
 } from "./api";
+import { useAuth } from "./AuthContext";
 import KnowaLogo from "./KnowaLogo";
 import "./Login.css";
 
 function Login() {
 
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [email, setEmail] =
     useState("");
@@ -50,7 +52,7 @@ function Login() {
 
       setLoading(true);
 
-      await loginUser(
+      await login(
         email.trim(),
         password
       );
@@ -194,6 +196,16 @@ function Login() {
 
         </form>
 
+
+        <p className="login-footer" style={{ marginTop: "20px", fontSize: "13px" }}>
+          Don't have an account?{" "}
+          <a
+            href="/signup"
+            style={{ color: "#6d28d9", textDecoration: "none", fontWeight: "600" }}
+          >
+            Sign up
+          </a>
+        </p>
 
         <p className="login-footer">
           KNOWA AI · Intelligent

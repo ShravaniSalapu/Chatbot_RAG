@@ -12,10 +12,12 @@ import {
 import KnowaLogo from "./KnowaLogo";
 import Chatbots from "./Chatbots";
 import Login from "./Login";
+import Signup from "./Signup";
 import InstallWidget from "./InstallWidget";
 import ManageChatbot from "./ManageChatbot";
 import KnowledgeBase from "./KnowledgeBase";
 import ChatbotKnowledge from "./ChatbotKnowledge";
+import { AuthProvider, useAuth } from "./AuthContext";
 import { getChatbots, getDocuments, getUsage } from "./api";
 
 function Dashboard() {
@@ -140,6 +142,58 @@ function PlaceholderPage({ title, description }) {
   );
 }
 
+function ProtectedRoute({ children }) {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#f6f7fb"
+      }}>
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+}
+
+function AdminRoute({ children }) {
+  const { isAuthenticated, role, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#f6f7fb"
+      }}>
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (role !== "admin") {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return children;
+}
+
 function PageHeader({ title, subtitle, action }) {
   return (
     <header className="topbar">
@@ -213,6 +267,12 @@ function ContentCard({
 function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user, role, logout, isAuthenticated } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
 
   const navigationItems = [
     {
@@ -257,6 +317,40 @@ function Layout() {
     },
   ];
 
+  const adminNavigationItems = [
+    {
+      path: "/admin/dashboard",
+      icon: "👑",
+      label: "Admin Dashboard",
+    },
+    {
+      path: "/admin/users",
+      icon: "👥",
+      label: "Users",
+    },
+    {
+      path: "/admin/activity",
+      icon: "📋",
+      label: "Activity Logs",
+    },
+    {
+      path: "/admin/usage",
+      icon: "📈",
+      label: "Usage",
+    },
+  ];
+
+  const allNavigationItems = role === "admin"
+    ? [...navigationItems, ...adminNavigationItems]
+    : navigationItems;
+
+  // Redirect authenticated users from login/signup to dashboard
+  useEffect(() => {
+    if (isAuthenticated && (location.pathname === "/login" || location.pathname === "/signup")) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [isAuthenticated, location.pathname, navigate]);
+
   function isNavItemActive(item) {
     if (item.path === "/install-widget") {
       return (
@@ -287,7 +381,7 @@ function Layout() {
 
         <nav className="sidebar-nav">
 
-          {navigationItems.map((item) => (
+          {allNavigationItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
@@ -312,18 +406,35 @@ function Layout() {
           <div className="user-card">
 
             <div className="user-avatar">
-              S
+              {user?.full_name?.charAt(0).toUpperCase() || user?.email?.charAt(0).toUpperCase() || "U"}
             </div>
 
             <div>
               <div className="user-name">
-                Shravani
+                {user?.full_name || user?.email || "User"}
               </div>
 
               <div className="user-role">
-                Admin
+                {role ? role.charAt(0).toUpperCase() + role.slice(1) : "User"}
               </div>
             </div>
+
+            <button
+              onClick={handleLogout}
+              style={{
+                marginLeft: "auto",
+                border: "none",
+                background: "none",
+                cursor: "pointer",
+                fontSize: "16px",
+                color: "#64748b",
+                padding: "4px",
+                borderRadius: "4px",
+              }}
+              title="Logout"
+            >
+              🚪
+            </button>
 
           </div>
 
@@ -413,31 +524,58 @@ function Layout() {
             element={<InstallWidget />}
           />
 
+          {/* Admin Routes */}
+          <Route
+            path="/admin/dashboard"
+            element={
+              <AdminRoute>
+                <PlaceholderPage
+                  title="Admin Dashboard"
+                  description="Admin overview and management"
+                />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/admin/users"
+            element={
+              <AdminRoute>
+                <PlaceholderPage
+                  title="Users"
+                  description="Manage platform users"
+                />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/admin/activity"
+            element={
+              <AdminRoute>
+                <PlaceholderPage
+                  title="Activity Logs"
+                  description="View system activity and audit logs"
+                />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/admin/usage"
+            element={
+              <AdminRoute>
+                <PlaceholderPage
+                  title="Usage"
+                  description="Monitor platform usage statistics"
+                />
+              </AdminRoute>
+            }
+          />
+
         </Routes>
 
       </main>
 
     </div>
   );
-}
-
-function ProtectedRoute({ children }) {
-
-  const token =
-    localStorage.getItem(
-      "access_token"
-    );
-
-  if (!token) {
-    return (
-      <Navigate
-        to="/login"
-        replace
-      />
-    );
-  }
-
-  return children;
 }
 
 
@@ -447,28 +585,37 @@ function App() {
 
     <BrowserRouter>
 
-      <Routes>
+      <AuthProvider>
 
-        {/* Public Login */}
+        <Routes>
 
-        <Route
-          path="/login"
-          element={<Login />}
-        />
+          {/* Public Routes */}
+
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+
+          <Route
+            path="/signup"
+            element={<Signup />}
+          />
 
 
-        {/* Protected Application */}
+          {/* Protected Application */}
 
-        <Route
-          path="/*"
-          element={
-            <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/*"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
 
-      </Routes>
+        </Routes>
+
+      </AuthProvider>
 
     </BrowserRouter>
 
