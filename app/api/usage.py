@@ -35,6 +35,27 @@ async def get_my_usage(
     )
 
 
+@router.get("/admin/usage", response_model=UsageResponse)
+async def get_admin_usage(
+    current_user: CurrentUser = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    """Admin view of tenant usage vs plan limits."""
+    summary = get_usage_summary(db, current_user.tenant_id)
+    return UsageResponse(
+        tenant_id=summary["tenant_id"],
+        plan=summary["plan"],
+        document_count=summary["document_count"],
+        storage_bytes=summary["storage_bytes"],
+        upload_count=summary["upload_count"],
+        chat_count=summary["chat_count"],
+        search_count=summary["search_count"],
+        api_call_count=summary["api_call_count"],
+        period_start=summary["period_start"],
+        limits=PlanLimitsResponse(**summary["limits"]),
+    )
+
+
 @router.get("/plans", response_model=AllPlansResponse)
 async def list_plans(
     current_user: CurrentUser = Depends(require_admin),

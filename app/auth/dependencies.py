@@ -1,24 +1,47 @@
 """
 FastAPI authentication dependencies.
-Supports JWT Bearer tokens and database-backed X-API-Key headers.
+
+Supports:
+- JWT Bearer authentication
+- Database-backed X-API-Key authentication
+- Admin authorization
 """
 
 import uuid
 from dataclasses import dataclass
 
-from fastapi import Depends, HTTPException, status
-from fastapi.security import APIKeyHeader, OAuth2PasswordBearer
+from fastapi import (
+    Depends,
+    HTTPException,
+    status,
+)
+from fastapi.security import (
+    APIKeyHeader,
+    OAuth2PasswordBearer,
+)
 from jose import JWTError
 from sqlalchemy.orm import Session
 
-from app.auth.security import decode_access_token
+from app.auth.security import (
+    decode_access_token,
+)
 from app.config import get_settings
 from app.db.database import get_db
 from app.db.models import User
-from app.services.api_key_service import authenticate_api_key
+from app.services.api_key_service import (
+    authenticate_api_key,
+)
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login", auto_error=False)
-api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
+
+oauth2_scheme = OAuth2PasswordBearer(
+    tokenUrl="/api/v1/auth/login",
+    auto_error=False,
+)
+
+api_key_header = APIKeyHeader(
+    name="X-API-Key",
+    auto_error=False,
+)
 
 
 @dataclass
@@ -28,43 +51,100 @@ class CurrentUser:
     email: str
     role: str
     full_name: str | None = None
-    auth_method: str = "jwt"  # jwt | api_key
+    auth_method: str = "jwt"
 
+
+# ============================================================
+# CURRENT USER
+# ============================================================
 
 async def get_current_user(
-    token: str | None = Depends(oauth2_scheme),
-    api_key: str | None = Depends(api_key_header),
+    token: str | None = Depends(
+        oauth2_scheme
+    ),
+    api_key: str | None = Depends(
+        api_key_header
+    ),
     db: Session = Depends(get_db),
 ) -> CurrentUser:
+
     settings = get_settings()
+
+    # --------------------------------------------------------
+    # Development mode
+    # --------------------------------------------------------
+
     if not settings.require_auth:
         return _get_or_create_dev_user(db)
 
+    # --------------------------------------------------------
+    # API KEY
+    # --------------------------------------------------------
+
     if api_key:
-        return _authenticate_api_key_user(api_key, db)
+        return _authenticate_api_key_user(
+            api_key,
+            db,
+        )
+
+    # --------------------------------------------------------
+    # JWT
+    # --------------------------------------------------------
 
     if not token:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Not authenticated. Provide Bearer token or X-API-Key header.",
-            headers={"WWW-Authenticate": "Bearer"},
+            detail=(
+                "Not authenticated. "
+                "Provide Bearer token or X-API-Key header."
+            ),
+            headers={
+                "WWW-Authenticate": "Bearer"
+            },
         )
 
     try:
         payload = decode_access_token(token)
+
         user_id = payload.get("sub")
+
         if not user_id:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+            raise HTTPException(
+                status_code=401,
+                detail="Invalid token",
+            )
+
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Could not validate credentials",
-            headers={"WWW-Authenticate": "Bearer"},
+            headers={
+                "WWW-Authenticate": "Bearer"
+            },
         )
 
-    user = db.query(User).filter(User.id == uuid.UUID(user_id), User.is_active.is_(True)).first()
+    try:
+        user_uuid = uuid.UUID(user_id)
+    except ValueError:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid user ID",
+        )
+
+    user = (
+        db.query(User)
+        .filter(
+            User.id == user_uuid,
+            User.is_active.is_(True),
+        )
+        .first()
+    )
+
     if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User not found",
+        )
 
     return CurrentUser(
         user_id=str(user.id),
@@ -76,8 +156,20 @@ async def get_current_user(
     )
 
 
-def _authenticate_api_key_user(raw_key: str, db: Session) -> CurrentUser:
-    record, user = authenticate_api_key(db, raw_key)
+# ============================================================
+# API KEY USER
+# ============================================================
+
+def _authenticate_api_key_user(
+    raw_key: str,
+    db: Session,
+) -> CurrentUser:
+
+    record, user = authenticate_api_key(
+        db,
+        raw_key,
+    )
+
     if user:
         return CurrentUser(
             user_id=str(user.id),
@@ -87,6 +179,7 @@ def _authenticate_api_key_user(raw_key: str, db: Session) -> CurrentUser:
             full_name=user.full_name,
             auth_method="api_key",
         )
+
     return CurrentUser(
         user_id=str(record.id),
         tenant_id=str(record.tenant_id),
@@ -97,17 +190,38 @@ def _authenticate_api_key_user(raw_key: str, db: Session) -> CurrentUser:
     )
 
 
-async def require_admin(current_user: CurrentUser = Depends(get_current_user)) -> CurrentUser:
+# ============================================================
+# REQUIRE ADMIN
+# ============================================================
+
+async def require_admin(
+    current_user: CurrentUser = Depends(
+        get_current_user
+    ),
+) -> CurrentUser:
+
     if current_user.role != "admin":
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Admin access required")
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin access required",
+        )
+
     return current_user
 
 
-def _get_or_create_dev_user(db: Session) -> CurrentUser:
-    """Fallback user when REQUIRE_AUTH=false for local development."""
+# ============================================================
+# DEVELOPMENT USER
+# ============================================================
+
+def _get_or_create_dev_user(
+    db: Session,
+) -> CurrentUser:
+
     from app.db.models import Tenant
+    from app.auth.security import hash_password
 
     user = db.query(User).first()
+
     if user:
         return CurrentUser(
             user_id=str(user.id),
@@ -115,13 +229,17 @@ def _get_or_create_dev_user(db: Session) -> CurrentUser:
             email=user.email,
             role=user.role,
             full_name=user.full_name,
+            auth_method="jwt",
         )
 
-    tenant = Tenant(name="Development", slug="dev", plan="free")
+    tenant = Tenant(
+        name="Development",
+        slug="dev",
+        plan="free",
+    )
+
     db.add(tenant)
     db.flush()
-
-    from app.auth.security import hash_password
 
     user = User(
         tenant_id=tenant.id,
@@ -130,7 +248,9 @@ def _get_or_create_dev_user(db: Session) -> CurrentUser:
         full_name="Dev User",
         role="admin",
     )
+
     db.add(user)
+
     db.commit()
     db.refresh(user)
 
@@ -140,4 +260,5 @@ def _get_or_create_dev_user(db: Session) -> CurrentUser:
         email=user.email,
         role=user.role,
         full_name=user.full_name,
+        auth_method="jwt",
     )

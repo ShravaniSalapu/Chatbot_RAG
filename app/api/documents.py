@@ -31,8 +31,15 @@ async def list_documents(
     current_user: CurrentUser = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    """List all documents for the current tenant."""
-    docs = list_documents_for_tenant(db, current_user.tenant_id)
+    """List all documents for the current tenant. Admins see all, users see their own."""
+    if current_user.role == "admin":
+        # Admins see all documents in the tenant
+        docs = list_documents_for_tenant(db, current_user.tenant_id)
+    else:
+        # Regular users only see documents they uploaded
+        docs = list_documents_for_tenant(db, current_user.tenant_id)
+        docs = [doc for doc in docs if str(doc.uploaded_by) == current_user.user_id]
+    
     return [
         {
             "document_id": doc.id,

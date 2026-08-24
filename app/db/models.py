@@ -171,9 +171,79 @@ class AuditLog(Base):
         DateTime(timezone=True), server_default=func.now(), index=True
     )
 
+# class Chatbot(Base):
+#     """
+#     Chatbot entity owned by a tenant.
+#     """
+
+#     __tablename__ = "chatbots"
+
+#     id: Mapped[uuid.UUID] = mapped_column(
+#         UUID(as_uuid=True),
+#         primary_key=True,
+#         default=_uuid,
+#     )
+
+#     tenant_id: Mapped[uuid.UUID] = mapped_column(
+#         UUID(as_uuid=True),
+#         ForeignKey("tenants.id"),
+#         nullable=False,
+#         index=True,
+#     )
+
+#     name: Mapped[str] = mapped_column(
+#         String(255),
+#         nullable=False,
+#     )
+
+#     description: Mapped[str | None] = mapped_column(
+#         Text,
+#         nullable=True,
+#     )
+
+#     status: Mapped[str] = mapped_column(
+#         String(50),
+#         default="draft",
+#         nullable=False,
+#     )
+
+#     embed_token: Mapped[str] = mapped_column(
+#         String(64),
+#         unique=True,
+#         nullable=False,
+#         default=lambda: uuid.uuid4().hex,
+# )
+
+#     created_at: Mapped[datetime] = mapped_column(
+#         DateTime(timezone=True),
+#         server_default=func.now(),
+#     )
+
+#     updated_at: Mapped[datetime | None] = mapped_column(
+#         DateTime(timezone=True),
+#         onupdate=func.now(),
+#         nullable=True,
+#     )
+
+#     tenant: Mapped["Tenant"] = relationship(
+#         back_populates="chatbots"
+#     )
+
+#     settings: Mapped["ChatbotSettings | None"] = relationship(
+#         "ChatbotSettings",
+#         back_populates="chatbot",
+#         uselist=False,
+#         cascade="all, delete-orphan",
+#     )
+#     chatbot_documents: Mapped[list["ChatbotDocument"]] = relationship(
+#     "ChatbotDocument",
+#     back_populates="chatbot",
+#     cascade="all, delete-orphan",
+# )
+
 class Chatbot(Base):
     """
-    Chatbot entity owned by a tenant.
+    Chatbot entity owned by a tenant and created by a user.
     """
 
     __tablename__ = "chatbots"
@@ -188,6 +258,16 @@ class Chatbot(Base):
         UUID(as_uuid=True),
         ForeignKey("tenants.id"),
         nullable=False,
+        index=True,
+    )
+
+    # User who created this chatbot.
+    # Nullable so existing chatbots in the database
+    # continue to work.
+    created_by: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=True,
         index=True,
     )
 
@@ -212,7 +292,7 @@ class Chatbot(Base):
         unique=True,
         nullable=False,
         default=lambda: uuid.uuid4().hex,
-)
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
@@ -229,18 +309,24 @@ class Chatbot(Base):
         back_populates="chatbots"
     )
 
+    # User who created the chatbot
+    creator: Mapped["User | None"] = relationship(
+        "User",
+        foreign_keys=[created_by],
+    )
+
     settings: Mapped["ChatbotSettings | None"] = relationship(
         "ChatbotSettings",
         back_populates="chatbot",
         uselist=False,
         cascade="all, delete-orphan",
     )
-    chatbot_documents: Mapped[list["ChatbotDocument"]] = relationship(
-    "ChatbotDocument",
-    back_populates="chatbot",
-    cascade="all, delete-orphan",
-)
 
+    chatbot_documents: Mapped[list["ChatbotDocument"]] = relationship(
+        "ChatbotDocument",
+        back_populates="chatbot",
+        cascade="all, delete-orphan",
+    )
 from app.db.chatbot_document import ChatbotDocument
 
 
